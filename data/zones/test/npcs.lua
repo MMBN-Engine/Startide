@@ -1,0 +1,5 @@
+--load("/data/npcs/machines.lua")
+--load("/data/npcs/human.lua")
+--load("/data/npcs/orangutan.lua")
+--load("/data/npcs/gorilla.lua")
+--load("/data/npcs/chimpanzee.lua")

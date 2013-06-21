@@ -1,0 +1,1 @@
+load("/data/objects/egos/armor.lua")

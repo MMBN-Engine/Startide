@@ -87,10 +87,10 @@ newTalent{
 	points = 1,
 	mode = "passive",
 	on_learn = function(self, t)
-		self.resists.all = (self.resists.all or 0) + 1
+		self.resists.all = (self.resists[DamageType.PHYSICAL] or 0) + 1
 	end,
 	on_unlearn = function(self, t)
-		self.resists.all = (self.resists.all or 0) - 1
+		self.resists.all = (self.resists[DamageType.PHYSICAL] or 0) - 1
 	end,
 	info = function(self, t)
 		return [[Increase damage reduction by +1.]]
@@ -104,12 +104,12 @@ newTalent{
 	mode = "passive",
 	require = { talent = {Talents.T_DAMAGE_REDUCTION_I }, },
 	on_learn = function(self, t)
-		self.resists.all = (self.resists.all or 0) + 1
+		self.resists.all = (self.resists[DamageType.PHYSICAL] or 0) + 1
 	end,
 	on_unlearn = function(self, t)
-		self.resists.all = (self.resists.all or 0) - 1
-	end,
-	info = function(self, t)
+		self.resists.all = (self.resists[DamageType.PHYSICAL] or 0) - 1
+	end,	
+info = function(self, t)
 		return [[Increase damage reduction by +1.]]
 	end,
 }
@@ -121,10 +121,10 @@ newTalent{
 	mode = "passive",
 	require = { talent = {Talents.T_DAMAGE_REDUCTION_II }, },
 	on_learn = function(self, t)
-		self.resists.all = (self.resists.all or 0) + 1
+		self.resists.all = (self.resists[DamageType.PHYSICAL] or 0) + 1
 	end,
 	on_unlearn = function(self, t)
-		self.resists.all = (self.resists.all or 0) - 1
+		self.resists.all = (self.resists[DamageType.PHYSICAL] or 0) - 1
 	end,
 	info = function(self, t)
 		return [[Increase damage reduction by +1.]]

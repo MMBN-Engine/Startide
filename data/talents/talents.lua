@@ -42,7 +42,7 @@ newTalent{
 	points = 1,
 	mode = "passive",
 	info = function(self, t)
-		return [[Attacks with handguns do +1 damage.]]
+		return [[Attacks with handguns have a +1 attack bonus.]]
 	end,
 }
 
@@ -74,7 +74,7 @@ newTalent{
 	points = 1,
 	mode = "passive",
 	info = function(self, t)
-		return [[Attacks with handguns have a +1 attack bonus.]]
+		return [[Attacks with longarms have a +1 attack bonus.]]
 	end,
 }
 
@@ -85,7 +85,7 @@ newTalent{
 	points = 1,
 	mode = "passive",
 	info = function(self, t)
-		return [[Attacks with handguns do +2 damage.]]
+		return [[Attacks with longarms do +2 damage.]]
 	end,
 }
 
@@ -184,7 +184,7 @@ newTalent{
 		self:rangedTarget(target, t, tg)
 	end,
 	info = function(self, t)
-		return [[Shoot with ranged weapons, getting +2 from base range.]]
+		return [[Shoot with ranged weapons, increasing range by +2.]]
 	end,
 }
 
@@ -205,6 +205,6 @@ newTalent{
 		self:rangedTarget(target, t, tg)
 	end,
 	info = function(self, t)
-		return [[Shoot with ranged weapons at range of 2, getting +1 attack and +1 damage.]]
+		return [[Shoot with ranged weapons at range of 2 with +1 attack and +1 damage.]]
 	end,
 }

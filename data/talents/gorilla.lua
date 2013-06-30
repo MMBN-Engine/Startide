@@ -12,7 +12,7 @@ newTalent{
 		self.melee_bonus = self.melee_bonus - 1
 	end,
 	info = function(self, t)
-		return [[Receive a +1 melee damage bonus.]]
+		return [[Increase melee damage by +1.]]
 	end,
 }
 
@@ -29,7 +29,7 @@ newTalent{
 		self.melee_bonus = self.melee_bonus - 1
 	end,
 	info = function(self, t)
-		return [[Receive a +1 melee damage bonus.]]
+		return [[Increase melee damage by +1.]]
 	end,
 }
 
@@ -46,6 +46,6 @@ newTalent{
 		self.melee_bonus = self.melee_bonus - 1
 	end,
 	info = function(self, t)
-		return [[Receive a +1 melee damage bonus.]]
+		return [[Increase melee damage by +1.]]
 	end,
 }

@@ -12,7 +12,7 @@ newTalent{
 		self.saves.mental = self.saves.mental - 1
 	end,
 	info = function(self, t)
-		return [[Receive a +1 melee damage bonus.]]
+		return [[Increase mental save by +1.]]
 	end,
 }
 
@@ -29,7 +29,7 @@ newTalent{
 		self.saves.mental = self.saves.mental - 1
 	end,
 	info = function(self, t)
-		return [[Receive a +1 melee damage bonus.]]
+		return [[Increase mental save by +1.]]
 	end,
 }
 
@@ -46,6 +46,6 @@ newTalent{
 		self.saves.mental = self.saves.mental - 1
 	end,
 	info = function(self, t)
-		return [[Receive a +1 melee damage bonus.]]
+		return [[Increase mental save by +1.]]
 	end,
 }

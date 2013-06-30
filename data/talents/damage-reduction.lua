@@ -93,7 +93,7 @@ newTalent{
 		self.resists.all = (self.resists.all or 0) - 1
 	end,
 	info = function(self, t)
-		return [[You +1 damage reduction.]]
+		return [[Increase damage reduction by +1.]]
 	end,
 }
 
@@ -110,7 +110,7 @@ newTalent{
 		self.resists.all = (self.resists.all or 0) - 1
 	end,
 	info = function(self, t)
-		return [[You +1 damage reduction.]]
+		return [[Increase damage reduction by +1.]]
 	end,
 }
 
@@ -127,6 +127,6 @@ newTalent{
 		self.resists.all = (self.resists.all or 0) - 1
 	end,
 	info = function(self, t)
-		return [[You +1 damage reduction.]]
+		return [[Increase damage reduction by +1.]]
 	end,
 }

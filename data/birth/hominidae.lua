@@ -32,7 +32,7 @@ newBirthDescriptor{
 	},
 	inc_stats = { str=0, dex=0, int = 2, con=0 },
 	talents_types = {
-		--["human"] = {true, 0},
+		["human"] = {true, 0},
 	},
 	talents = {
 		[ActorTalents.T_LIGHT_PROFICIENCY] = 1,

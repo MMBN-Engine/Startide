@@ -1,5 +1,6 @@
 load("/data/talents/interface.lua")
 load("/data/talents/gorilla.lua")
+load("/data/talents/human.lua")
 load("/data/talents/damage-reduction.lua")
 
 newTalentType{ type="generic", name = "generic", description = "Generic talents" }

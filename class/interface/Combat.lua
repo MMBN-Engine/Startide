@@ -268,10 +268,10 @@ end
 function _M:saveRoll(num, save)
 	local roll = rng.dice(1, 20)
 
-	if roll == 1 then return false
-	if roll == 20 then return true
+	if roll == 1 then return false end
+	if roll == 20 then return true end
 
-	if roll + save > num then return true
+	if roll + save > num then return true end
 
 end
 

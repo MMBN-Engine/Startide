@@ -47,11 +47,11 @@ function _M:init(t, no_default)
 	self.unused_talents = self.unused_talents or 4
 
 	-- Saving throws
-	self.save = {}
-	self.save.fortitude = self.save.fortitude or 0
-	self.save.reflex = self.save_reflex or 0
-	self.save.mental = self.save.mental or 0
-	self.save.physical = self.save.physical or 0
+	self.saves = self.saves or {}
+	self.saves.fortitude = self.saves.fortitude or 0
+	self.saves.reflex = self.saves_reflex or 0
+	self.saves.mental = self.saves.mental or 0
+	self.saves.physical = self.saves.physical or 0
 
 	-- Default regen
 	t.power_regen = t.power_regen or 1

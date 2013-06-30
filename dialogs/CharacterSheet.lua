@@ -48,19 +48,28 @@ function _M:drawDialog()
     	w = self.w * 0.25 
     	-- start on second column
         
-    	s:drawStringBlended(self.font, "STR : "..(player:getStr()), w, h, 255, 255, 255, true) h = h + self.font_h
-    	s:drawStringBlended(self.font, "DEX : "..(player:getDex()), w, h, 255, 255, 255, true) h = h + self.font_h
-	s:drawStringBlended(self.font, "Int : "..(player:getInt()), w, h, 255, 255, 255, true) h = h + self.font_h
+    	s:drawStringBlended(self.font, "Strength     : "..(player:getStr()), w, h, 255, 255, 255, true) h = h + self.font_h
+    	s:drawStringBlended(self.font, "Dexterity    : "..(player:getDex()), w, h, 255, 255, 255, true) h = h + self.font_h
+    	s:drawStringBlended(self.font, "Constitution : "..(player:getCon()), w, h, 255, 255, 255, true) h = h + self.font_h
+	s:drawStringBlended(self.font, "Intelligence : "..(player:getInt()), w, h, 255, 255, 255, true) h = h + self.font_h
     
 	h = h + self.font_h
 
 	h = 0
-    	w = self.w * 0.25 
+    	w = self.w * 0.5 
 
-	s:drawStringBlended(self.font, "Attack : "..(player.atk), w, h, 255, 255, 255, true) h = h + self.font_h
-    	s:drawStringBlended(self.font, "Defense : "..(player.defense), w, h, 255, 255, 255, true) h = h + self.font_h
+	s:drawStringBlended(self.font, "Attack      : "..(player.atk), w, h, 255, 255, 255, true) h = h + self.font_h
+    	s:drawStringBlended(self.font, "Defense     : "..(player.defense), w, h, 255, 255, 255, true) h = h + self.font_h
 	s:drawStringBlended(self.font, "Melee bonus : "..(player.melee_bonus), w, h, 255, 255, 255, true) h = h + self.font_h
 
-    	self.c_desc:generate()
+ 	h = 0
+    	w = self.w * 0.75 
+
+	s:drawStringBlended(self.font, "Physical  : "..(player.saves.physical), w, h, 255, 255, 255, true) h = h + self.font_h
+    	s:drawStringBlended(self.font, "Reflex    : "..(player.saves.reflex), w, h, 255, 255, 255, true) h = h + self.font_h
+	s:drawStringBlended(self.font, "Fortitude : "..(player.saves.fortitude), w, h, 255, 255, 255, true) h = h + self.font_h
+	s:drawStringBlended(self.font, "Mental    : "..(player.saves.mental), w, h, 255, 255, 255, true) h = h + self.font_h
+
+	self.c_desc:generate()
     	self.changed = false
 end

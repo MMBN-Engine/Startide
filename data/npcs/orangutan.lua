@@ -1,16 +1,16 @@
 local ActorTalents = require("engine.interface.ActorTalents")
 
 newEntity{ 
-	define_as = "NPC_ORANGUTAN",
-	type = "Terran", subtype = "homonid",
+	define_as = "NPC_GORILLA",
+	type = "Terran", subtype = "hominid",
 	display = "o",
 	ai = "dumb_talented_simple", ai_state = { talent_in=1, },
 	name = "orangutan", color=colors.WHITE,
 	level_range = {1, 20}, exp_worth = 1,
-	stats = {int = 12},
-	rarity = 4,
-	body = { INVEN = 10, MAINHAND = 1, OFFHAND = 1, BODY = 1, HEAD = 1, CLIP = 1, },
-	max_life = resolvers.rngavg(11,14),
+	base_rarity = 8,
+	max_life = resolvers.rngavg(13,16),
+	clade = "Hominidae",
+	genus = "orangutan",
 	desc = [[An orangutan.]],
 	resolvers.life()
 }

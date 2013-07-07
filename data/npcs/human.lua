@@ -8,10 +8,10 @@ newEntity{
 	name = "human", color=colors.WHITE,
 	max_life = resolvers.rngavg(11,15),
 	level_range = {1, 20}, exp_worth = 1,
-	stats = {int = 12},
-	body = { INVEN = 10, MAINHAND = 1, OFFHAND = 1, BODY = 1, HEAD = 1, CLIP = 1, },
-	-- Light armor training
-	rarity = 4,
+	base_rarity = 3,
+	rarity = 3,
+	clade = "Hominidae",
+	genus = "Homo",
 	desc = [[A human.]],
 	resolvers.life()
 }

@@ -168,7 +168,8 @@ end
 
 --- Notifies a change of stat value
 function _M:onStatChange(stat, v)
-	if stat == self.STAT_CON then
+	-- Temporary fix for NPC classes
+	if stat == self.STAT_CON and type(self.max_life) == "number" then
 		self.max_life = self.max_life + v*2
 	end
 end

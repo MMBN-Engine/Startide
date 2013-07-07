@@ -41,3 +41,4 @@ newBirthDescriptor{
 }
 
 load("/data/birth/hominidae.lua")
+load("/data/birth/classes.lua")

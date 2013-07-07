@@ -5,13 +5,12 @@ newEntity{
 	type = "Terran", subtype = "hominid",
 	display = "g",
 	ai = "dumb_talented_simple", ai_state = { talent_in=1, },
-	name = "human", color=colors.WHITE,
+	name = "gorilla", color=colors.WHITE,
 	level_range = {1, 20}, exp_worth = 1,
-	stats = {int = 12},
-	rarity = 4,
-	max_life = resolvers.rngavg(11,14),
-	body = { INVEN = 10, MAINHAND = 1, OFFHAND = 1, BODY = 1, HEAD = 1, CLIP = 1, },
+	base_rarity = 8,
+	max_life = resolvers.rngavg(15,18),
+	clade = "Hominidae",
+	genus = "Gorilla",
 	desc = [[A gorilla.]],
-	talents = {[ActorTalents.T_BRAWL]=1,},
 	resolvers.life()
 }

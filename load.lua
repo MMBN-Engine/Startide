@@ -53,10 +53,4 @@ ActorAI:loadDefinition("/engine/ai/")
 -- Birther descriptor
 Birther:loadDefinition("/data/birth/descriptors.lua")
 
-classify = function()
-	return function(e)
-		e[#e+1] = resolvers.class_change({colors.BLUE})
-	end
-end
-
 return {require "mod.class.Game" }

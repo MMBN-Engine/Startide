@@ -192,3 +192,107 @@ function resolvers.calc.ammo(t, e)
 	e.remaining = e.capacity
 	return nil
 end
+
+local apply = function(descriptors, e) 
+	local stats, inc_stats = {}, {}
+	e.rarity = e.base_rarity	
+
+	for i, d in ipairs(descriptors) do
+		
+		if d.copy then
+			local copy = table.clone(d.copy, true)
+			-- Append array part
+			while #copy > 0 do
+				local f = table.remove(copy)
+				table.insert(e, f)
+			end
+			-- Copy normal data
+			table.merge(e, copy, true)
+		end
+		if d.copy_add then
+			local copy = table.clone(d.copy_add, true)
+			-- Append array part
+			while #copy > 0 do
+				local f = table.remove(copy)
+				table.insert(e, f)
+			end
+			-- Copy normal data
+			table.mergeAdd(e, copy, true)
+		end
+		-- Change stats
+		if d.stats then
+			for stat, inc in pairs(d.stats) do
+				stats[stat] = (stats[stat] or 0) + inc
+			end
+		end
+		if d.inc_stats then
+			for stat, inc in pairs(d.inc_stats) do
+				inc_stats[stat] = (inc_stats[stat] or 0) + inc
+			end
+		end
+		if d.talents_types then
+			local tt = d.talents_types
+			if type(tt) == "function" then tt = tt(self) end
+			for t, v in pairs(tt) do
+				local mastery
+				if type(v) == "table" then
+					v, mastery = v[1], v[2]
+				else
+					v, mastery = v, 0
+				end
+				e:learnTalentType(t, v)
+				e.talents_types_mastery[t] = (e.talents_types_mastery[t] or 0) + mastery
+			end
+		end
+		if d.talents then
+			for tid, lev in pairs(d.talents) do
+				for i = 1, lev do
+					e:learnTalent(tid, true)
+				end
+			end
+		end
+		if d.body then
+			e.body = d.body
+			e:initBody()
+		end
+		if d.rarity then e.rarity = e.rarity + d.rarity end
+		if d.type == "class" then
+			e.name = e.name.." "..d.name
+			e.color_r = d.color.r
+			e.color_g = d.color.g
+			e.color_b = d.color.b
+		end
+	end
+
+	-- Apply stats now to not be overridden by other things
+	for stat, inc in pairs(stats) do
+		e:incStat(stat, inc)
+	end
+	for stat, inc in pairs(inc_stats) do
+		e:incIncStat(stat, inc)
+	end
+end
+
+-- Applys class to NPCs. Will change to egos if I can figure out how.
+function resolvers.class()
+	return {__resolver="class", __resolve_last=true}
+end
+function resolvers.calc.class(t, e)
+	local Birther = require("engine.Birther")
+	local class = {}
+
+	local species_name = e.name:gsub("^%l", string.upper) 
+	local species = Birther.birth_descriptor_def.species[species_name]
+	local clade = Birther.birth_descriptor_def.clade[e.clade]
+	--local genus = Birther.birth_descriptor_def.genus[e.genus]
+
+	local class_list = Birther.birth_descriptor_def.class
+
+	while true do
+		class = rng.table(class_list)
+		if rng.chance(class.rarity) then break end
+	end
+
+	e = apply({species, clade, class}, e)
+	return e
+end

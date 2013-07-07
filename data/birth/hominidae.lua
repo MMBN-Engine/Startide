@@ -9,8 +9,8 @@ newBirthDescriptor{
 		species =
 		{
 			__ALL__ = "disallow",
-			["Homo sapiens"] = "allow",
-			["Pan loquens"] = "allow",
+			Human = "allow",
+			Chimpanzee = "allow",
 			Gorilla = function() return profile.mod.allow_build.gorrila and "allow" or "disallow" end,
 			Orangutan = function() return profile.mod.allow_build.orangutan and "allow" or "disallow" end,
 		},
@@ -20,9 +20,10 @@ newBirthDescriptor{
 
 newBirthDescriptor{
 	type = "species",
-	name = "Homo sapiens",
+	name = "Human",
 	desc =
 	{
+		"Homo sapiens.",
 		"Humans are from the planet Earth.",
 		"#GOLD#Stat modifiers:",
 		"#LIGHT_BLUE# * +0 Strength, +0 Dexterity",
@@ -41,9 +42,10 @@ newBirthDescriptor{
 
 newBirthDescriptor{
 	type = "species",
-	name = "Pan loquens",
+	name = "Chimpanzee",
 	desc =
 	{
+		"Pan loquens.",
 		"Uplifted by humans, chimps are much like their",
 		"elder cousins.",
 		"#GOLD#Stat modifiers:",

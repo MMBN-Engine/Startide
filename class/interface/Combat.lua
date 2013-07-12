@@ -32,13 +32,14 @@ function _M:meleeTarget(atk, def, target)
 	if target:knowTalent(T_DEFENSIVE_MARTIAL_ARTS) then def = def + 1 end
 
 	local dam = self:strMod() + self.melee_bonus
-	local hit = self:combatRoll(atk, def)
+	local hit, crit = self:combatRoll(atk, def, 0)
 	
-	if hit == 1 then
+	if hit then
 		dam = dam + self:meleeRoll()
-	elseif hit == 2 then
-		game.logSeen(self, "%s preforms a critical hit!", srcname)
-		dam = dam + self:meleeRoll() + self:meleeRoll()
+		if crit then
+			game.logSeen(self, "%s preforms a critical hit!", srcname)
+			dam = dam + self:meleeRoll() + self:meleeRoll()
+		end
 	else
 		game.logSeen(self, "%s misses %s.", srcname, target.name)
 	end
@@ -51,26 +52,29 @@ function _M:meleeTarget(atk, def, target)
 	self:useEnergy(game.energy_to_act)
 end
 
-function _M:combatRoll(atk, def)
+function _M:combatRoll(atk, def, threat)
 	local roll = rng.dice(1, 20)
-	local crit = rng.dice(1, 20)
+	local crit_roll = rng.dice(1, 20)
 
 	local hit = nil
+	local crit = nil
 
 	-- Checks the combat roll
-	if roll == 1 then
-		return false
-	elseif roll == 20 then
-		hit = 1
-		if (crit + atk >= def) then
-			 hit = 2
-		end
-	elseif (roll + atk >= def) then hit = 1
-	else
-		return false
+	if roll == 1 then 
+		hit = false
+	elseif roll == 20 then 
+		hit = true
+	elseif (roll + atk >= def) then 
+		hit = true
+	else 
+		hit = false
 	end
 
-	return hit
+	if (roll >= 20 - threat) and (crit_roll + atk >= def) and hit then
+		crit = true
+	end
+
+	return hit, crit
 end
 
 function _M:meleeAttack(target)
@@ -137,20 +141,22 @@ function _M:rangedTarget(target, talent, tg)
 	tg.talent = tg.talent or talent
 	tg.atk = tg.atk or 0
 	tg.bonus = tg.bonus or 0
+	tg.crit = tg.crit or 0
 
 	local x, y, target = self:getTarget(tg)
 	if not x or not y or not target then return nil end
 
 	local srcname = game.level.map.seens(self.x, self.y) and self.name:capitalize() or "Something"
 
-	local dam = self:dexMod()
-	local hit = self:combatRoll(self:rangedAttack(target), target:getDefense())
+	local dam = self:dexMod() + self.ranged_bonus + tg.bonus
+	local hit, crit = self:combatRoll(self:rangedAttack(target), target:getDefense(), self:rangedCrit(tg))
 	
-	if hit == 1 then
-		dam = dam + self:rangedRoll(tg.bonus)
-	elseif hit == 2 then
-		game.logSeen(self, "%s preforms a critical hit!", srcname)
-		dam = dam + self:rangedRoll(tg.bonus) + self:rangedRoll(tg.bonus)
+	if hit then
+		dam = dam + self:rangedRoll()
+		if crit then
+			game.logSeen(self, "%s preforms a critical hit!", srcname)
+			dam = dam + self:rangedRoll(tg) + self:rangedRoll(tg.bonus)
+		end
 	else
 		game.logSeen(self, "%s misses %s.", srcname, target.name)
 	end
@@ -183,6 +189,20 @@ function _M:rangedAttack(target)
 	return atk
 end
 
+function _M:rangedCrit(tg)
+	local crit = 0 + tg.crit
+
+	local weapon = self:hasRangedWeapon()
+	if weapon.subtype and self:hasImprovedCritial(weapon.subtype) then
+		crit = crit + 1
+	end
+	if weapon.ranged.crit then
+		crit = crit.weapon.ranged.crit
+	end
+
+	return crit
+end
+
 -- Checks weapon/armor training
 _M.proficiencies = {
 	handgun =  Talents.T_HANDGUN_PROFICIENCY,
@@ -208,12 +228,32 @@ function _M:hasFocus(type)
 end
 
 _M.specializations = {
-	handgun =   Talents.T_HANDGUN_SPECIALIZATION,
-	longarm =   Talents.T_LONGARM_SPECIALIZATION,
+	handgun =    Talents.T_HANDGUN_SPECIALIZATION,
+	longarm =    Talents.T_LONGARM_SPECIALIZATION,
 }
 
 function _M:hasSpecialization(type)
 	if self:knowTalent(specializations[type]) then return true
+	else return false end
+end
+
+_M.greaterSpecializations = {
+	handgun =    Talents.T_GREATER_HANDGUN_SPECIALIZATION,
+	longarm =    Talents.T_GREATER_LONGARM_SPECIALIZATION,
+}
+
+function _M:hasGreaterSpecialization(type)
+	if self:knowTalent(greaterSpecializations[type]) then return true
+	else return false end
+end
+
+_M.improvedCritials = {
+	handgun =   Talents.T_HANDGUN_CRITICAL,
+	longarm =   Talents.T_LONGARM_CRITICAL,
+}
+
+function _M:hasImprovedCritial(type)
+	if self:knowTalent(improvedCritials[type]) then return true
 	else return false end
 end
 
@@ -234,16 +274,17 @@ function _M:hasRangedWeapon(type)
 	return weapon
 end
 
-function _M:rangedRoll(mod)
+function _M:rangedRoll()
 	local weapon = self:hasRangedWeapon()
 	local ranged = {}	
 	ranged = weapon.ranged
 
 	local dam = rng.dice(ranged.num, ranged.sides) + (ranged.bonus or 0)
 
-	dam = dam + (mod or 0)
+	dam = dam
 	
 	if weapon.subtype and self:hasSpecialization(weapon.subtype) then dam = dam + 2 end
+	if weapon.subtype and self:hasGreaterSpecialization(weapon.subtype) then dam = dam + 2 end
 	
 	return dam
 end
@@ -272,7 +313,6 @@ function _M:saveRoll(num, saves)
 	if roll == 20 then return true end
 
 	if roll + saves > num then return true end
-
 end
 
 function _M:strSave()
@@ -298,4 +338,3 @@ function _M:intSave()
 
 	return saves
 end
-

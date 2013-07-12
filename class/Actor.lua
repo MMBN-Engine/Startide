@@ -39,6 +39,8 @@ function _M:init(t, no_default)
 	self.melee = self.melee or {num = 1, sides = 3, bonus = 0}
 	self.melee_bonus = self.melee_bonus or 0
 
+	self.ranged_bonus = self.ranged_bonus or 0
+
 	self.resists = self.resists or {}
 
 	self.size = self.size or 3
@@ -161,7 +163,7 @@ function _M:levelup()
 	self.defense = self.defense + 1
 
 	self.unused_talents = self.unused_talents + 1
-	if self.level % 2 == 0 then self.unused_stats = self.unused_stats + 1 end
+	if self.level % 4 == 0 then self.unused_stats = self.unused_stats + 1 end
 
 	self.life = self.max_life
 end

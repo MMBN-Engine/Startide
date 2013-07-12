@@ -36,6 +36,9 @@ function _M:init(t, no_default)
 	self.defense = self.defense or 10
 	self.atk = self.atk or 0
 	
+	self.ranged_atk = self.ranged_atk or 0
+	self.melee_atk = self.Melee_atk or 0
+
 	self.melee = self.melee or {num = 1, sides = 3, bonus = 0}
 	self.melee_bonus = self.melee_bonus or 0
 

@@ -8,12 +8,14 @@ newEntity{
 	color=colors.DARK_GREY, 
 	rarity = 5,
 	encumber = 0,
+	egos = "/data/objects/egos/handguns.lua",
+	egos_chance = 20,
 	name = "a generic longarm",
 	ammo = "bullets", 
 } 
 
 newEntity{ 
-	base = "BASE_HANDGUN", 
+	base = "BASE_LONGARM", 
 	name = "carbine", 
 	level_range = {1, 10}, 
 	cost = 1, 
@@ -21,7 +23,7 @@ newEntity{
 }
 
 newEntity{ 
-	base = "BASE_HANDGUN", 
+	base = "BASE_LONGARM", 
 	name = "rifle", 
 	level_range = {5, 15}, 
 	cost = 1, 
@@ -29,7 +31,7 @@ newEntity{
 }
 
 newEntity{ 
-	base = "BASE_HANDGUN", 
+	base = "BASE_LONGARM", 
 	name = "machine gun", 
 	level_range = {10, 20}, 
 	cost = 1, 
@@ -38,7 +40,7 @@ newEntity{
 
 -- Maybe move these to own type later?
 newEntity{ 
-	base = "BASE_HANDGUN", 
+	base = "BASE_LONGARM", 
 	name = "shot gun", 
 	level_range = {1, 10}, 
 	cost = 1, 
@@ -46,7 +48,7 @@ newEntity{
 }
 
 newEntity{ 
-	base = "BASE_HANDGUN", 
+	base = "BASE_LONGARM", 
 	name = "sawed off shot gun", 
 	level_range = {1, 10}, 
 	cost = 1, 

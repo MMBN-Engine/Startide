@@ -1,0 +1,1 @@
+load("/data/objects/egos/handguns.lua")

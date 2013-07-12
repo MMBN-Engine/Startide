@@ -175,7 +175,7 @@ function _M:rangedTarget(target, talent, tg)
 end
 
 function _M:rangedAttack(target)
-	local atk = self:dexMod() + (target.size - self.size) * 2
+	local atk = self:dexMod() + (target.size - self.size) * 2 + self.ranged_atk
 	
 	local weapon = self:hasRangedWeapon()
 	if weapon.subtype and not self:hasProficiency(weapon.subtype) then

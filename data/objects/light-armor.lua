@@ -1,6 +1,6 @@
 newEntity{ 
 	define_as = "BASE_LIGHT", 
-	slot = "OFFHAND", 
+	slot = "BODY", 
 	type = "armor", 
 	subtype="light", 
 	display = "[", 

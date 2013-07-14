@@ -7,14 +7,16 @@ newEntity{
 	color=colors.SLATE, 
 	rarity = 5,
 	encumber = 0,
-	name = "bullets",
+	name = "a generic bullet",
 	resolvers.ammo(),
 } 
 
 newEntity{ 
 	base = "BASE_BULLET", 
-	name = "small clip", 
+	name = "bullets", 
 	level_range = {1, 10}, 
 	cost = 1,
-	capacity = resolvers.rngavg(5, 12),
+	capacity = resolvers.rngavg(8, 12),
+	egos = "/data/objects/egos/bullets.lua",
+	egos_chance = 20,
 }

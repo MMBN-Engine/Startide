@@ -109,7 +109,7 @@ function _M:meleeRoll()
 		melee = self.melee		
 	end
 
-	return rng.dice(melee.num, melee.sides) + (melee.bonus or 0)
+	return self:damageRoll(self.melee)
 end
 
 function _M:hasMeleeWeapon()
@@ -121,16 +121,21 @@ function _M:hasMeleeWeapon()
 	return weapon
 end
 
+function _M:damageRoll(weapon)
+	return rng.dice(weapon.num, weapon.sides) + (weapon.bonus or 0)
+end
+
 -- Ranged Attack functions
 function _M:rangedTarget(target, talent, tg)
 	local weapon = self:hasRangedWeapon()
+	local ammo = self:hasAmmo(weapon.ammo)
 
 	if not weapon then
 		game.logPlayer(self, "You need to wield a gun to shoot.")
 		return nil
 	end
 
-	if weapon.ammo and not self:hasAmmo(weapon.ammo) then
+	if weapon.ammo and not ammo then
 		game.logPlayer(self, "You need "..weapon.ammo.." to shoot.")
 		return nil
 	end
@@ -152,25 +157,36 @@ function _M:rangedTarget(target, talent, tg)
 	local hit, crit = self:combatRoll(self:rangedAttack(target), target:getDefense(), self:rangedCrit(tg))
 	
 	if hit then
+		-- Roll and apply damage
 		dam = dam + self:rangedRoll()
 		if crit then
 			game.logSeen(self, "%s preforms a critical hit!", srcname)
 			dam = dam + self:rangedRoll(tg) + self:rangedRoll(tg.bonus)
 		end
+	
+		self:project(tg, target.x, target.y, DamageType.PHYSICAL, dam, {type="gun"})
+
+		-- Project from ammo (incindiary bullets etc.)
+		if ammo and ammo.project then
+			for typ, dam in pairs(ammo.project) do
+				self:project(tg, target.x, target.y, typ, self:damageRoll(dam))
+			end
+		end
+
+		-- Burst damage on crits
+		if ammo and ammo.burst then
+			for typ, dam in pairs(ammo.project) do
+				self:project({type="ball", radius=1}, target.x, target.y, typ, self:damageRoll(dam))
+			end
+		end
 	else
 		game.logSeen(self, "%s misses %s.", srcname, target.name)
 	end
 
-	if hit then
-		self:project(tg, target.x, target.y, DamageType.PHYSICAL, math.max(1, dam), {type="gun"})
-	end
-	
 	if weapon.ammo then
-		local ammo = self:hasAmmo()
-		-- Can add multiple bullet effects later
 		ammo.remaining = ammo.remaining - 1
 	end
-		
+
 	self:useEnergy(game.energy_to_act)
 end
 
@@ -279,10 +295,8 @@ function _M:rangedRoll()
 	local ranged = {}	
 	ranged = weapon.ranged
 
-	local dam = rng.dice(ranged.num, ranged.sides) + (ranged.bonus or 0)
+	local dam = self:damageRoll(ranged)
 
-	dam = dam
-	
 	if weapon.subtype and self:hasSpecialization(weapon.subtype) then dam = dam + 2 end
 	if weapon.subtype and self:hasGreaterSpecialization(weapon.subtype) then dam = dam + 2 end
 	

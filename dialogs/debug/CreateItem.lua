@@ -39,7 +39,7 @@ function _M:use(item)
 
 	if item.unique then
 		local n = game.zone:finishEntity(game.level, "object", item.e)
-		n:identify(true)
+		--n:identify(true)
 		game.zone:addEntity(game.level, n, "object", game.player.x, game.player.y)
 	else
 		game:registerDialog(GetQuantity.new("Number of items to make", "1-100", 20, 100, function(qty)
@@ -47,7 +47,7 @@ function _M:use(item)
 				if not ret then
 					for i = 1, qty do
 						local n = game.zone:finishEntity(game.level, "object", item.e, {ego_chance=-1000})
-						n:identify(true)
+						--n:identify(true)
 						game.zone:addEntity(game.level, n, "object", game.player.x, game.player.y)
 					end
 				else
@@ -61,7 +61,7 @@ function _M:use(item)
 
 						for i = 1, qty do
 							local n = game.zone:finishEntity(game.level, "object", item.e, f)
-							n:identify(true)
+							--n:identify(true)
 							game.zone:addEntity(game.level, n, "object", game.player.x, game.player.y)
 						end
 					end)

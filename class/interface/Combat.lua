@@ -38,7 +38,7 @@ function _M:meleeTarget(atk, def, target)
 		dam = dam + self:meleeRoll()
 		if crit then
 			game.logSeen(self, "%s preforms a critical hit!", srcname)
-			dam = dam + self:meleeRoll() + self:meleeRoll()
+			dam = dam + self:meleeRoll()
 		end
 	else
 		game.logSeen(self, "%s misses %s.", srcname, target.name)
@@ -161,7 +161,7 @@ function _M:rangedTarget(target, talent, tg)
 		dam = dam + self:rangedRoll()
 		if crit then
 			game.logSeen(self, "%s preforms a critical hit!", srcname)
-			dam = dam + self:rangedRoll(tg) + self:rangedRoll(tg.bonus)
+			dam = dam + self:rangedRoll(tg)
 		end
 	
 		self:project(tg, target.x, target.y, DamageType.PHYSICAL, dam, {type="gun"})
@@ -174,9 +174,9 @@ function _M:rangedTarget(target, talent, tg)
 		end
 
 		-- Burst damage on crits
-		if ammo and ammo.burst then
-			for typ, dam in pairs(ammo.project) do
-				self:project({type="ball", radius=1}, target.x, target.y, typ, self:damageRoll(dam))
+		if ammo and ammo.burst and crit then
+			for typ, dam in pairs(ammo.burst) do
+				self:project({type="ball", radius=1}, target.x, target.y, typ, self:damageRoll(dam), {type=DamageType:get(typ).name})
 			end
 		end
 	else

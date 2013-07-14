@@ -36,25 +36,25 @@ setDefaultProjector(function(src, x, y, type, dam)
 end)
 
 newDamageType{
-	name = "physical", type = "PHYSICAL", energy = true,
+	name = "physical", type = "PHYSICAL", 
 }
 
 newDamageType{
-	name = "acid", type = "ACID", text_color = "#GREEN#",
+	name = "acid", type = "ACID", text_color = "#GREEN#", energy = true,
 }
 
 newDamageType{
-	name = "cold", type = "COLD", text_color = "#1133F3#",
+	name = "cold", type = "COLD", text_color = "#1133F3#", energy = true,
 }
 
 newDamageType{
-	name = "electricity", type = "ELECTRICITY", text_color = "#ROYAL_BLUE#",
+	name = "electricity", type = "ELECTRICITY", text_color = "#ROYAL_BLUE#", energy = true,
 }
 
 newDamageType{
-	name = "fire", type = "FIRE", text_color = "#LIGHT_RED#",
+	name = "fire", type = "FIRE", text_color = "#LIGHT_RED#", energy = true,
 }
 
 newDamageType{
-	name = "sonic", type = "SONIC", text_color = "#WHITE#",
+	name = "sonic", type = "SONIC", text_color = "#WHITE#", energy = true,
 }

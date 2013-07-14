@@ -112,6 +112,22 @@ newTalent{
 }
 
 newTalent{
+	name = "Deadly Aim",
+	type = {"ranged", 1},
+	mode = "passive",
+	points = 1,
+	on_learn = function(self, t)
+		self.ranged_bonus = self.ranged_bonus + 1
+	end,
+	on_unlearn = function(self, t)
+		self.ranged_bonus = self.ranged_bonus - 1
+	end,
+	info = function(self, t)
+		return [[Increase damage with ranged weapons by +1.]]
+	end,
+}
+
+newTalent{
 	name = "Far Shot",
 	type = {"ranged", 1},
 	points = 1,
@@ -172,20 +188,5 @@ newTalent{
 	end,
 	info = function(self, t)
 		return [[Increases critical hit threshold by +1, by reduces defense by -5 for one turn.]]
-	end,
-}
-
-newTalent{
-	name = "Precise Shot",
-	type = {"ranged", 1},
-	points = 1,
-	on_learn = function(self, t)
-		self.ranged_bonus = self.ranged_bonus + 1
-	end,
-	on_unlearn = function(self, t)
-		self.ranged_bonus = self.ranged_bonus - 1
-	end,
-	info = function(self, t)
-		return [[Increase damage with ranged weapons by +1.]]
 	end,
 }

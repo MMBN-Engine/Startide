@@ -318,37 +318,3 @@ function _M:hasAmmo(type)
 	
 	return ammo
 end
-
--- Saves
-function _M:saveRoll(num, saves)
-	local roll = rng.dice(1, 20)
-
-	if roll == 1 then return false end
-	if roll == 20 then return true end
-
-	if roll + saves > num then return true end
-end
-
-function _M:strSave()
-	local save = self.saves.physical + self:strMod()
-
-	return saves
-end
-
-function _M:dexSave()
-	local save = self.saves.reflex + self:dexMod()
-
-	return saves
-end
-
-function _M:conSave()
-	local save = self.saves.fortitude + self:conMod()
-
-	return saves
-end
-
-function _M:intSave()
-	local saves = self.saves.mental + self:intMod()
-
-	return saves
-end

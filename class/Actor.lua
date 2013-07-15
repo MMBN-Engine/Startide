@@ -95,7 +95,6 @@ function _M:act()
 		local eff = self.tempeffect_def[eff_id]
 		if eff.decrease == 0 then 
 			if self:saveRoll(check, eff.type) then
-				game.logSeen(self, "%s is no longer %s.", self.name, eff.desc)
 				params.dur = 0 
 			end
 		end

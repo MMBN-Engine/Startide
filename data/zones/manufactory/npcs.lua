@@ -14,7 +14,6 @@ newEntity{
 	max_life = 10,
 	melee = {num = 1, sides = 4},
 	desc = [[The manufactory control machine.]],
-	resolvers.life(),
 	resolvers.drops{ chance = 100, nb = 1,
 		{type = "implant", subtype = "cybernetic", defined = "OBJ_MACHINE_INTERFACE"} 
 	},

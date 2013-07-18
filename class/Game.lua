@@ -92,6 +92,7 @@ function _M:newGame()
 		local d = require("engine.dialogs.ShowText").new("Welcome to Startide", "intro-"..self.player.starting_intro, {name=self.player.name}, nil, nil, function()
 			self.player:playerLevelup()
 		end, true)
+		self.player.life = self.player.max_life
 		self:registerDialog(d)
 		print("[PLAYER BIRTH] resolved!")
 		end)

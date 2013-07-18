@@ -62,7 +62,8 @@ function _M:init(t, no_default)
 	t.power_regen = t.power_regen or 1
 	t.life_regen = t.life_regen or 0
 
-	self.life_rating = self.life_rating or 8
+	self.life_rating = self.life_rating or 4
+	self.life = self.max_life
 
 	engine.Actor.init(self, t, no_default)
 	engine.interface.ActorTemporaryEffects.init(self, t)

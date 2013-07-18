@@ -12,5 +12,4 @@ newEntity{
 	clade = "Hominidae",
 	genus = "Gorilla",
 	desc = [[A gorilla.]],
-	resolvers.life()
 }

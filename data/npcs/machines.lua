@@ -14,7 +14,6 @@ newEntity{
 	life_rating = 5,
 	melee = {num = 1, sides = 4},
 	desc = [[A machine with large loading forks. It was made for manual work.]],
-	resolvers.life()
 }
 
 newEntity{
@@ -34,5 +33,4 @@ newEntity{
 		[ActorTalents.T_SHOOT] = 1,
 	}, 
 	desc = [[Armed with rubber bullets, it was designed more for crowd control than subduing an individual.]],
-	resolvers.life()
 }

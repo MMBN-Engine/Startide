@@ -12,5 +12,4 @@ newEntity{
 	genus = "Pan",
 	max_life = resolvers.rngavg(11,14),
 	desc = [[A chimpanzee.]],
-	resolvers.life()
 }

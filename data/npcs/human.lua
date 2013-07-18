@@ -13,7 +13,6 @@ newEntity{
 	clade = "Hominidae",
 	genus = "Homo",
 	desc = [[A human.]],
-	resolvers.life()
 }
 
 --\198\165

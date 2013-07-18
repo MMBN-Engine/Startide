@@ -172,18 +172,6 @@ function resolvers.calc.class_change(t, e)
 	e.name = e.name.." "..class
 end
 
---This is here because NPCs were generating with non-integer
---life and not at maxlife. It there's a less clunky way to fix
---it I'll remove this
-function resolvers.life()
-	return {__resolver="life", __resolve_last=true}
-end
-function resolvers.calc.life(t, e)
-	e.max_life = math.floor(e.max_life)
-	e.life = e.max_life
-	return nil
-end
-
 function resolvers.ammo()
 	return {__resolver="ammo", __resolve_last=true}
 end

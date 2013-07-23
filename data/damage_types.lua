@@ -58,3 +58,29 @@ newDamageType{
 newDamageType{
 	name = "sonic", type = "SONIC", text_color = "#WHITE#", energy = true,
 }
+
+newDamageType{
+	name = "hack", type = "HACK",
+	projector = function(src, x, y, type, dam)
+		local target = game.level.map(x, y, Map.ACTOR)
+		if target then
+			local DC = dam.DC
+			local hackResist = target:hasEffect(target.EFF_HACKRESIST)
+			if hackReisist then 
+				DC = DC - hackResist.parameters.DC
+			end
+
+			if target:saveRoll(DC, "mental") then
+				target:setEffect(target.EFF_HACKRESIST, 5, {DC = 5})
+				if target:knowTalent(target.T_BACK_HACK) and not (src:saveRoll(dam.DC-5, "mental")) then
+					game.logSeen(target, "%s back hacks %s!", target.name:capitalize(), src.name)
+					src:setEffect(src.EFF_HACKED, 1, {dam = dam.dam})
+				else
+					game.logSeen(target, "%s resists the hack!", target.name:capitalize())
+				end
+			else
+				target:setEffect(target.EFF_HACKED, 1, {dam = dam.dam})
+			end
+		end
+	end,
+}

@@ -92,10 +92,10 @@ function _M:act()
 
 	-- Shrug off effects
 	for eff_id, params in pairs(self.tmp) do
-		local check = params.check_ongoing or 10
+		local DC = params.DC_ongoing or 10
 		local eff = self.tempeffect_def[eff_id]
 		if eff.decrease == 0 then 
-			if self:saveRoll(check, eff.type) then
+			if self:saveRoll(DC, eff.type) then
 				params.dur = 0 
 			end
 		end
@@ -306,7 +306,7 @@ function _M:conMod()
 	return math.floor(self:getCon()/2 - 5)
 end
 
-function _M:saveRoll(num, type)
+function _M:saveRoll(DC, type)
 	local roll = rng.dice(1, 20)
 	local saves = self.saves[type]
 
@@ -318,5 +318,5 @@ function _M:saveRoll(num, type)
 	if roll == 1 then return false end
 	if roll == 20 then return true end
 
-	if roll + saves > num then return true end
+	if roll + saves > DC then return true end
 end

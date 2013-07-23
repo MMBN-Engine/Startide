@@ -12,7 +12,7 @@ module(..., package.seeall, class.make)
 function _M:bumpInto(target)
 	local reaction = self:reactionToward(target)
 	if reaction < 0 then
-		return self:meleeTarget(self:meleeAttack(target), target:getDefense(self),target)
+		return self:meleeTarget(self:meleeAttack(target), target:getDefense(),target)
 	elseif reaction >= 0 then
 		if self.move_others then
 			-- Displace
@@ -86,7 +86,7 @@ function _M:meleeAttack(target)
 	return atk
 end
 
-function _M:getDefense(attacker)
+function _M:getDefense()
 	local def = self.defense + self:dexMod()
 
 	if self:getInven("BODY") then
@@ -96,6 +96,11 @@ function _M:getDefense(attacker)
 		end
 	end
 	
+	local hacked = self:hasEffect(EFF_HACKED)
+	if hack then
+		def = def - 2
+	end
+
 	return def
 end
 
@@ -154,7 +159,7 @@ function _M:rangedTarget(target, talent, tg)
 	local srcname = game.level.map.seens(self.x, self.y) and self.name:capitalize() or "Something"
 
 	local dam = self:dexMod() + self.ranged_bonus + tg.bonus
-	local hit, crit = self:combatRoll(self:rangedAttack(target), target:getDefense(self), self:rangedCrit(tg))
+	local hit, crit = self:combatRoll(self:rangedAttack(target), target:getDefense(), self:rangedCrit(tg))
 	
 	if hit then
 		-- Roll and apply damage

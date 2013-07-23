@@ -31,7 +31,7 @@ newBirthDescriptor{
 		"#GOLD#Talents:",
 		"#LIGHT_BLUE# * Armor Proficiency (Light)",
 	},
-	inc_stats = { str=0, dex=0, int = 2, con=0 },
+	stats = { str=0, dex=0, int = 2, con=0 },
 	talents_types = {
 		["human"] = {true, 0},
 	},
@@ -53,7 +53,7 @@ newBirthDescriptor{
 		"#LIGHT_BLUE# * +0 Intelligence, +0 Constitution",
 		"#GOLD#Talents:",
 	},
-	inc_stats = { str=2, dex=-2, int = 0, con=0 },
+	stats = { str=2, dex=-2, int = 0, con=0 },
 	talents_types = {
 		--["chimpanzee"] = {true, 0},
 	},
@@ -72,7 +72,7 @@ newBirthDescriptor{
 		"#GOLD#Talents:",
 		"#LIGHT_BLUE# * Brawl",
 	},
-	inc_stats = { str=4, dex=-3, int = -1, con=2 },
+	stats = { str=4, dex=-3, int = -1, con=2 },
 	talents_types = {
 		["gorilla"] = {true, 0},
 	},
@@ -91,7 +91,7 @@ newBirthDescriptor{
 		"#LIGHT_BLUE# * +-1 Intelligence, +1 Constitution",
 		"#GOLD#Talents:",
 	},
-	inc_stats = { str=3, dex=-2, int = -1, con=1 },
+	stats = { str=3, dex=-2, int = -1, con=1 },
 	talents_types = {
 		--["orangutan"] = {true, 0},
 	},

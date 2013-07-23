@@ -1,4 +1,5 @@
 require "engine.class"
+local Stats = require "engine.interface.ActorStats"
 
 module(..., package.seeall, class.make)
 
@@ -67,6 +68,15 @@ end
 -- Displays the stats
 function _M:display()
 	local player = game.player
+	local statsColor = function(stat)
+		if player.inc_stats[stat] < 0 then
+			return "#ff0000#%3d"
+		elseif player.inc_stats[stat] > 0 then
+			return "#d4a017#%3d"
+		else
+			return "#00ff00#%3d"
+		end
+	end
 	if not player or not player.changed or not game.level then return end
 
 	self.items = {}
@@ -78,9 +88,9 @@ function _M:display()
 	self:makeTexture(("%s#{normal}#"):format(player.name), 0, h, colors.GOLD.r, colors.GOLD.g, colors.GOLD.b, self.w) h = h + self.font_h
 	self.font:setStyle("normal")
 
-	self:makeTexture(("Str/Dex: #00ff00#%3d/%3d"):format(player:getStr(), player:getDex()), x, h, 255, 255) h = h + self.font_h	
+	self:makeTexture(("Str/Dex: "..statsColor(Stats.STAT_STR).."#00ff00#/"..statsColor(Stats.STAT_DEX)):format(player:getStr(), player:getDex()), x, h, 255, 255) h = h + self.font_h	
 
-	self:makeTexture(("Int/Con: #00ff00#%3d/%3d"):format(player:getInt(), player:getCon()), x, h, 255, 255) h = h + self.font_h
+	self:makeTexture(("Int/Con: "..statsColor(Stats.STAT_INT).."#00ff00#/"..statsColor(Stats.STAT_CON)):format(player:getInt(), player:getCon()), x, h, 255, 255) h = h + self.font_h
 
 	h = h + self.font_h
 

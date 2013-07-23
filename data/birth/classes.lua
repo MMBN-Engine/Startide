@@ -14,7 +14,7 @@ newBirthDescriptor{
 	},
 	color = colors.BLUE,
 	rarity = 2,
-	inc_stats = { str = -2, int = -3},
+	stats = { str = -2, int = -3},
 	talents = {
 	},
 }
@@ -35,7 +35,7 @@ newBirthDescriptor{
 	},
 	color = colors.PURPLE,
 	rarity = 4,
-	inc_stats = { str = 1 },
+	stats = { str = 1 },
 	talents = {
 		[ActorTalents.T_DEFENSIVE_MARTIAL_ARTS] = 1,
 	},

@@ -52,7 +52,7 @@ function _M:run()
 	self.logSeen = function(e, style, ...) if e and self.level.map.seens(e.x, e.y) then self.log(style, ...) end end
 	self.logPlayer = function(e, style, ...) if e == self.player then self.log(style, ...) end end
 
-	self.log(self.flash.GOOD, "Welcome to #00FF00#the template module!")
+	self.log(self.flash.GOOD, "Welcome to #00FF00#Startide!")
 
 	-- Setup inputs
 	self:setupCommands()

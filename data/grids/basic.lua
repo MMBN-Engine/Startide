@@ -79,3 +79,18 @@ newEntity{
 		return true
 	end,	
 }
+
+newEntity{
+	define_as = "ELEVATOR",
+	name = "shuttle ramp",
+	display = '+', color_r=238, color_g=154, color_b=77, back_color=colors.DARK_UMBER,
+	notice = true,
+	always_remember = true,
+	block_sight = true,
+	block_move = function(self, x, y, e, act, couldpass)
+		if e and e.player and act then
+			game:registerDialog(require("mod.dialogs.ShipElevator").new())
+		end
+		return true
+	end,	
+}

@@ -4,6 +4,7 @@ return {
 	max_level = 3,
 	--decay = {300, 800},
 	width = 50, height = 50,
+	type = {ship_floor = 10},
 	level_scheme = "fixed",
 	actor_adjust_level = function(zone, level, e) return zone.base_level + level.level - 1 + rng.range(-1,2) end,
 	persistent = "zone",

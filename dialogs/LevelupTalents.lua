@@ -63,7 +63,7 @@ function _M:generateList()
 		if not tt.hide and not (self.actor.talents_types[tt.type] == nil) then
 			local cat = tt.type:gsub("/.*", "")
 			local ttknown = self.actor:knowTalentType(tt.type)
-			list[#list+1] = { name=cat:capitalize().." / "..tt.name:capitalize() ..(" (mastery %.02f)"):format(self.actor:getTalentTypeMastery(tt.type)), type=tt.type, color=ttknown and {0,200,0} or {128,128,128} }
+			list[#list+1] = { name = cat:capitalize(), type=tt.type, color={0,200,0}}
 			if ttknown then
 				known[#known+1] = {name="known", color={0,200,0}}
 			else
@@ -74,8 +74,7 @@ function _M:generateList()
 			if (self.actor.__hidden_talent_types[tt.type] == nil and ttknown) or (self.actor.__hidden_talent_types[tt.type] ~= nil and not self.actor.__hidden_talent_types[tt.type]) then
 				for j, t in ipairs(tt.talents) do
 					if not t.hide or self.actor.__show_special_talents[t.id] then
-						local typename = "class"
-												list[#list+1] = { name="    "..t.name.." ("..typename..")", talent=t.id, color=not ttknown and {128,128,128} }
+																		list[#list+1] = { name="    "..t.name, talent=t.id, color=not ttknown and {128,128,128} }
 						if self.actor:getTalentLevelRaw(t.id) == t.points then
 							known[#known+1] = {name="known", color=ttknown and {0,255,0} or {128,128,128}}
 						else

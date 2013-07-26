@@ -11,6 +11,7 @@ local Birther = require "engine.Birther"
 local UIBase = require "engine.ui.Base"
 local ActorInventory = require "engine.interface.ActorInventory"
 local Quest = require "engine.Quest"
+local System = require "mod.class.interface.System"
 
 UIBase.ui = "simple"
 
@@ -52,5 +53,8 @@ ActorAI:loadDefinition("/engine/ai/")
 
 -- Birther descriptor
 Birther:loadDefinition("/data/birth/descriptors.lua")
+
+-- Systems
+System:loadDefinition("/data/systems.lua")
 
 return {require "mod.class.Game" }

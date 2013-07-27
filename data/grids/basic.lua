@@ -74,7 +74,7 @@ newEntity{
 	block_sight = true,
 	block_move = function(self, x, y, e, act, couldpass)
 		if e and e.player and act then
-			game:registerDialog(require("mod.dialogs.ShuttleControl").new())
+			game:registerDialog(require("mod.dialogs.ShuttleControl").new(game.player))
 		end
 		return true
 	end,	

@@ -55,6 +55,6 @@ ActorAI:loadDefinition("/engine/ai/")
 Birther:loadDefinition("/data/birth/descriptors.lua")
 
 -- Systems
-System:loadDefinition("/data/systems.lua")
+System:loadDefinition("/data/systems/solar-system.lua")
 
 return {require "mod.class.Game" }

@@ -21,6 +21,20 @@ newBirthDescriptor{
 		starting_zone = "manufactory",
 		starting_quest = "robot-rampage",
 		starting_intro = "main",
+		system = {
+			"MERCURY",
+			"VENUS",
+			"MARS",
+			"EARTH",
+			"ASTEROID_BELT",
+			"JUPITER",
+			"CENTAURS",
+			"SATURN",
+			"URANUS",
+			"NEPTUNE",
+			"KUIPER_BELT",
+			"SCATTERED_DISK",
+		},
 	},
 	descriptor_choices =
 	{

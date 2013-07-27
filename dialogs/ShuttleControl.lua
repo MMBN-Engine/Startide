@@ -1,67 +1,72 @@
 require "engine.class"
-require "engine.ui.Dialog"
-local List = require "engine.ui.List"
-local GetQuantity = require "engine.dialogs.GetQuantity"
+require "engine.Dialog"
+local System = require "mod.class.System"
 
-module(..., package.seeall, class.inherit(engine.ui.Dialog))
+module(..., package.seeall, class.inherit(engine.Dialog))
 
-function _M:init()
+function _M:init(actor)
+	self.actor = actor
+
+	engine.Dialog.init(self, "Change Zone", math.max(game.w * 0.85, 800), math.max(game.h * 0.85, 600))
+
 	self:generateList()
-	engine.ui.Dialog.init(self, "Change Zone", 1, 1)
 
-	local list = List.new{width=400, height=500, scrollbar=true, list=self.list, fct=function(item) self:use(item) end}
+	self.sel = 1
+	self.scroll = 1
+	self.max = math.floor((self.ih - 65) / self.font_h) - 1
 
-	self:loadUI{
-		{left=0, top=0, ui=list},
+	self:keyCommands(nil, {
+		MOVE_UP = function() self.sel = util.boundWrap(self.sel - 1, 1, #self.list) self.scroll = util.scroll(self.sel, self.scroll, self.max) self.changed = true end,
+		MOVE_DOWN = function() self.sel = util.boundWrap(self.sel + 1, 1, #self.list) self.scroll = util.scroll(self.sel, self.scroll, self.max) self.changed = true end,
+		ACCEPT = function() self:change() end,
+		EXIT = function() game:unregisterDialog(self) end,
+	})
+	self:mouseZones{
+		{ x=0, y=0, w=game.w, h=game.h, mode={button=true}, norestrict=true, fct=function(button) if button ~= "none" then self.key:triggerVirtual("EXIT") end end},
+		{ x=2, y=65, w=350, h=self.font_h*self.max, fct=function(button, x, y, xrel, yrel, tx, ty)
+			self.changed = true
+			self.sel = util.bound(self.scroll + math.floor(ty / self.font_h), 1, #self.list)
+			if button == "left" then self:change() end
+			self.changed = true
+		end },
 	}
-	self:setupUI(true, true)
-
-	self.key:addCommands{ __TEXTINPUT = function(c)
-		for i = list.sel + 1, #self.list do
-			local v = self.list[i]
-			if v.name:sub(1, 1):lower() == c:lower() then list:select(i) return end
-		end
-		for i = 1, list.sel do
-			local v = self.list[i]
-			if v.name:sub(1, 1):lower() == c:lower() then list:select(i) return end
-		end
-	end}
-	self.key:addBinds{ EXIT = function() game:unregisterDialog(self) end, }
-end
-
-function _M:on_register()
-	game:onTickEnd(function() self.key:unicodeInput(true) end)
-end
-
-function _M:use(item)
-	if not item then return end
-	game:unregisterDialog(self)
-
-	game:changeLevel(1, item.name)
 end
 
 function _M:generateList()
-	local list = {}
 
-	for i, dir in ipairs(fs.list("/data/zones/")) do
-		local f = loadfile("/data/zones/"..dir.."/zone.lua")
-		if f then
-			setfenv(f, {})
-			local ok, z = pcall(f)
-			if ok and z.type and z.type.world then
-				list[#list+1] = {name=z.name, zone=dir, min=1, max=z.max_level}
-			end
+	-- Makes up the list
+	local list = {}, {}
+	for i, s in ipairs(self.actor.system) do
+		local system = System:getSystem(s)
+		
+		list[#list+1] = { name = system.name, id = system.id, color = {0, 220,0}}		
+		
+		local worlds = System:getWorlds(s)
+		-- Find all zones in the system
+		for j, w in ipairs(worlds) do
+			list[#list+1] = { name="    "..w.name, zone = w.starting_zone, color = colors.WHITE} 
 		end
 	end
-	table.sort(list, function(a,b) return a.name < b.name end)
-
-	local chars = {}
-	for i, v in ipairs(list) do
-		v.name = v.name
-		chars[self:makeKeyChar(i)] = i
-	end
-	list.chars = chars
 
 	self.list = list
+end
+
+function _M:change()
+	if self.list[self.sel].id then
+		return nil
+	else
+		game:changeLevel(1, self.list[self.sel].zone)
+	end
+end
+
+function _M:drawDialog(s)
+	-- Description part
+	self:drawHBorder(s, self.iw / 2, 2, self.ih - 4)
+
+	-- Zone list
+	--self:drawWBorder(s, 2, 60, 200)
+	self:drawSelectionList(s, 2, 10, self.font_h, self.list, self.sel, "name", self.scroll, self.max)
+	
+	self.changed = false
 end
 

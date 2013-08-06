@@ -94,3 +94,18 @@ newEntity{
 		return true
 	end,	
 }
+
+newEntity{
+	define_as = "SPACE_ELEVATOR",
+	name = "elevator", 
+	display = '+', color_r=238, color_g=154, color_b=77, 
+	notice = true,
+	always_remember = true,
+	block_move = function(self, x, y, e, act, couldpass)
+		if e and e.player and act then
+			local chat = require("engine.Chat").new("space-elevator", self, e)
+			chat:invoke()
+		end
+		return true
+	end,
+}

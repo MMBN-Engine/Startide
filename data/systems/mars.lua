@@ -1,5 +1,5 @@
 newWorld{ id = "MARS",
 	name = "Mars",
 	system = "MARS",
-	starting_zone = nil,
+	starting_zone = "huygens-elevator",
 }

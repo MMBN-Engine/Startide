@@ -56,6 +56,7 @@ function _M:change()
 		return nil
 	else
 		game:changeLevel(1, self.list[self.sel].zone)
+		game:unregisterDialog(self)
 	end
 end
 

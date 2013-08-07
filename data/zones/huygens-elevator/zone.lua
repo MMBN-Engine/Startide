@@ -16,7 +16,8 @@ return {
 		},
 		actor = {
 			class = "engine.generator.actor.Random",
-			nb_npc = {0, 0},
+			nb_npc = {80, 90},
+			filters = { {ego_filter = {properties = {"elevator"},},},},
 		},
 		object = { 
 			class = "engine.generator.object.Random", 

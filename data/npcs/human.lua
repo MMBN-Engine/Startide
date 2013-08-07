@@ -1,5 +1,3 @@
-local ActorTalents = require("engine.interface.ActorTalents")
-
 newEntity{ 
 	define_as = "NPC_HUMAN",
 	type = "Terran", subtype = "hominid",
@@ -13,6 +11,9 @@ newEntity{
 	clade = "Hominidae",
 	genus = "Homo",
 	desc = [[A human.]],
+	egos = "/data/npcs/egos/hominidae.lua",
+	egos_chance = 100,
+	resolvers.species()
 }
 
 --\198\165

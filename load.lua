@@ -12,6 +12,7 @@ local UIBase = require "engine.ui.Base"
 local ActorInventory = require "engine.interface.ActorInventory"
 local Quest = require "engine.Quest"
 local System = require "mod.class.System"
+local Faction = require "engine.Faction"
 
 UIBase.ui = "simple"
 
@@ -56,5 +57,8 @@ Birther:loadDefinition("/data/birth/descriptors.lua")
 
 -- Systems
 System:loadDefinition("/data/systems/solar-system.lua")
+
+-- Factions
+Faction:add{ name="Neutral", reaction = {}, }
 
 return {require "mod.class.Game" }

@@ -269,11 +269,6 @@ function resolvers.calc.class(t, e)
 	local Birther = require("engine.Birther")
 	local class = {}
 
-	local species_name = e.name:gsub("^%l", string.upper) 
-	local species = Birther.birth_descriptor_def.species[species_name]
-	local clade = Birther.birth_descriptor_def.clade[e.clade]
-	--local genus = Birther.birth_descriptor_def.genus[e.genus]
-
 	local class_list = Birther.birth_descriptor_def.class
 
 	while true do
@@ -281,6 +276,26 @@ function resolvers.calc.class(t, e)
 		if rng.chance(class.rarity) then break end
 	end
 
-	e = apply({species, clade, class}, e)
+	e = apply({class}, e)
+	return e
+end
+
+
+function resolvers.species()
+	return {__resolver="species", __resolve_last=true}
+end
+function resolvers.calc.species(t, e)
+	local Birther = require("engine.Birther")
+	local species_name = e.name
+
+	if e.prefix then species_name = species_name:gsub("%U+%s+", "")  end
+	if e.suffix then species_name = species_name:gsub("%s+%U+", "")  end
+	species_name = species_name:gsub("^%l", string.upper)
+ 
+	local species = Birther.birth_descriptor_def.species[species_name]
+	local clade = Birther.birth_descriptor_def.clade[e.clade]
+	--local genus = Birther.birth_descriptor_def.genus[e.genus]
+
+	e = apply({species, clade}, e)
 	return e
 end

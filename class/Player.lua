@@ -37,6 +37,8 @@ function _M:init(t, no_default)
 
 	t.fixed_rating = true
 
+	self.move_others = true
+	
 	mod.class.Actor.init(self, t, no_default)
 	engine.interface.PlayerHotkeys.init(self, t)
 

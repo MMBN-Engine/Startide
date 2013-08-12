@@ -4,12 +4,6 @@ newWorld{ id = "PLUTO",
 	starting_zone = nil,
 }
 
-newWorld{ id = "Eris",
-	name = "Eris",
-	system = "KUIPER_BELT",
-	starting_zone = nil,
-}
-
 newWorld{ id = "HAUMEA",
 	name = "Haumea",
 	system = "KUIPER_BELT",

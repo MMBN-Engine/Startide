@@ -3,7 +3,7 @@ local DamageType = require "engine.DamageType"
 local Map = require "engine.Map"
 local Target = require "engine.Target"
 local Talents = require "engine.interface.ActorTalents"
-local Chat = require "engine.Chat"
+local Chat = require "mod.class.Chat"
 
 --- Interface to add ToME combat system
 module(..., package.seeall, class.make)

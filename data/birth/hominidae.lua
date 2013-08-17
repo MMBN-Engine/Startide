@@ -15,6 +15,9 @@ newBirthDescriptor{
 			Orangutan = function() return profile.mod.allow_build.orangutan and "allow" or "disallow" end,
 		},
 	},
+	copy = {
+		type = "hominid",
+	},
 	body = { INVEN = 10, MAINHAND = 1, OFFHAND = 1, BODY = 1, HEAD = 1, CLIP = 1, },
 }
 
@@ -32,6 +35,9 @@ newBirthDescriptor{
 		"#LIGHT_BLUE# * Armor Proficiency (Light)",
 	},
 	stats = { str=0, dex=0, int = 2, con=0 },
+	copy = {
+		subtype = "human",
+	},
 	talents_types = {
 		["human"] = {true, 0},
 	},
@@ -54,6 +60,9 @@ newBirthDescriptor{
 		"#GOLD#Talents:",
 	},
 	stats = { str=2, dex=-2, int = 0, con=0 },
+	copy = {
+		subtype = "chimpanzee",
+	},
 	talents_types = {
 		--["chimpanzee"] = {true, 0},
 	},
@@ -73,6 +82,9 @@ newBirthDescriptor{
 		"#LIGHT_BLUE# * Brawl",
 	},
 	stats = { str=4, dex=-3, int = -1, con=2 },
+	copy = {
+		subtype = "gorilla",
+	},
 	talents_types = {
 		["gorilla"] = {true, 0},
 	},
@@ -92,6 +104,9 @@ newBirthDescriptor{
 		"#GOLD#Talents:",
 	},
 	stats = { str=3, dex=-2, int = -1, con=1 },
+	copy = {
+		subtype = "orangutan",
+	},
 	talents_types = {
 		--["orangutan"] = {true, 0},
 	},

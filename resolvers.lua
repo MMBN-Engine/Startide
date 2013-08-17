@@ -286,11 +286,11 @@ function resolvers.species()
 end
 function resolvers.calc.species(t, e)
 	local Birther = require("engine.Birther")
-	local species_name = e.name
+	--local species_name = e.name
 
-	if e.prefix then species_name = species_name:gsub("%U+%s+", "")  end
-	if e.suffix then species_name = species_name:gsub("%s+%U+", "")  end
-	species_name = species_name:gsub("^%l", string.upper)
+	--if e.prefix then species_name = species_name:gsub("%U+%s+", "")  end
+	--if e.suffix then species_name = species_name:gsub("%s+%U+", "")  end
+	species_name = e.subtype:gsub("^%l", string.upper)
  
 	local species = Birther.birth_descriptor_def.species[species_name]
 	local clade = Birther.birth_descriptor_def.clade[e.clade]

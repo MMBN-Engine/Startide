@@ -2,7 +2,7 @@ local ActorTalents = require("engine.interface.ActorTalents")
 
 newEntity{ 
 	define_as = "NPC_GORILLA",
-	type = "Terran", subtype = "hominid",
+	type = "hominid", subtype = "gorilla",
 	display = "g",
 	ai = "dumb_talented_simple", ai_state = { talent_in=1, },
 	name = "gorilla", color=colors.WHITE,

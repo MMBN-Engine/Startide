@@ -1,6 +1,6 @@
 newEntity{ 
 	define_as = "NPC_HUMAN",
-	type = "Terran", subtype = "hominid",
+	type = "hominid", subtype = "human",
 	display = "p",
 	ai = "dumb_talented_simple", ai_state = { talent_in=1, },
 	name = "human", color=colors.WHITE,

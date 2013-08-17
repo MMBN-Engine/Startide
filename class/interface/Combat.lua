@@ -19,7 +19,6 @@ function _M:bumpInto(target)
 		if self.player and target.can_talk then 
 			local chat = Chat.new(target.can_talk, target, self) 
 			chat:invoke() 
-		end
 		elseif self.move_others then
 			-- Displace
 			game.level.map:remove(self.x, self.y, Map.ACTOR)

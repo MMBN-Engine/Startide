@@ -163,8 +163,8 @@ function _M:rangedTarget(target, talent, tg)
 
 	local srcname = game.level.map.seens(self.x, self.y) and self.name:capitalize() or "Something"
 
-	local dam = self:dexMod() + self.ranged_bonus + tg.bonus
-	local hit, crit = self:combatRoll(self:rangedAttack(target), target:getDefense(), self:rangedCrit(tg))
+	local dam = self.ranged_bonus + tg.bonus
+	local hit, crit = self:combatRoll(self:rangedAttack(target) + tg.atk, target:getDefense(), self:rangedCrit(tg))
 	
 	if hit then
 		-- Roll and apply damage

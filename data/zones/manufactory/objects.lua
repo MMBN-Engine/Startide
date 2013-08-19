@@ -1,6 +1,5 @@
 load("/data/objects/junk.lua")
-load("/data/objects/stimulants.lua")
-load("/data/objects/all.lua", rarity(0))
+load("/data/objects/all.lua")
 
 newEntity{ 
 	define_as = "OBJ_MACHINE_INTERFACE", 

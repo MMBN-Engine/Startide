@@ -7,7 +7,7 @@ newEntity{
 	type = "hominid", subtype = "human", unique = true,
 	display = "p",
 	ai = "dumb_talented_simple", ai_state = { talent_in=1, },
-	name = "Elisa_Viitala", color=colors.VIOLET,
+	name = "Elisa Viitala", color=colors.VIOLET,
 	max_life = 14, fixed_rating = true,
 	level_range = {6, nil}, exp_worth = 1,
 	clade = "Hominidae",

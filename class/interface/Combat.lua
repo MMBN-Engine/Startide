@@ -100,6 +100,10 @@ function _M:getDefense()
 			def = def + self.prof_defense
 		end
 	end
+
+	if self:attr("light_sensitive") and self.lite > 0 then
+		def = def - 2
+	end
 	
 	local hack = self:hasEffect(EFF_HACKED)
 	if hack then

@@ -10,6 +10,7 @@ newBirthDescriptor{
 		{
 			__ALL__ = "disallow",
 			Human = "allow",
+			Delver = function() return profile.mod.allow_build.delver and "allow" or "disallow" end,
 			Chimpanzee = "allow",
 			Gorilla = function() return profile.mod.allow_build.gorrila and "allow" or "disallow" end,
 			Orangutan = function() return profile.mod.allow_build.orangutan and "allow" or "disallow" end,
@@ -37,6 +38,36 @@ newBirthDescriptor{
 	stats = { str=0, dex=0, int = 2, con=0 },
 	copy = {
 		subtype = "human",
+	},
+	talents_types = {
+		["human"] = {true, 0},
+	},
+	talents = {
+		[ActorTalents.T_LIGHT_PROFICIENCY] = 1,
+	},
+}
+
+newBirthDescriptor{
+	type = "species",
+	name = "Delver",
+	desc =
+	{
+		"Homo speluncus.",
+		"Originally engineered to work in low light environments by Desantis Space, they eventually developed a freestanding culture of their own.",
+		"#GOLD#Stat modifiers:",
+		"#LIGHT_BLUE# * +0 Strength, +0 Dexterity",
+		"#LIGHT_BLUE# * +2 Intelligence, +0 Constitution",
+		"#GOLD#Talents:",
+		"#LIGHT_BLUE# * Armor Proficiency (Light)",
+		"#GOLD#Special:",
+		"#LIGHT_BLUE# * 10 infravision",
+		"#LIGHT_BLUE# * Light Sensitive: -2 defense when holding light",
+	},
+	stats = { str=0, dex=0, int = 2, con=0 },
+	copy = {
+		subtype = "human",
+		infravision = 10,
+		light_sensive = true,
 	},
 	talents_types = {
 		["human"] = {true, 0},

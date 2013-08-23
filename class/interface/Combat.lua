@@ -101,7 +101,7 @@ function _M:getDefense()
 		end
 	end
 	
-	local hacked = self:hasEffect(EFF_HACKED)
+	local hack = self:hasEffect(EFF_HACKED)
 	if hack then
 		def = def - 2
 	end

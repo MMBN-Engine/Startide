@@ -51,6 +51,7 @@ ActorInventory:defineInventory("CLIP", "Clip", true, "Load bullets here")
 
 -- Actor AIs
 ActorAI:loadDefinition("/engine/ai/")
+ActorAI:loadDefinition("/mod/ai/")
 
 -- Birther descriptor
 Birther:loadDefinition("/data/birth/descriptors.lua")

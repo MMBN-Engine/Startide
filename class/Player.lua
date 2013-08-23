@@ -74,12 +74,41 @@ end
 function _M:playerFOV()
 	-- Clean FOV before computing it
 	game.level.map:cleanFOV()
-	-- Compute both the normal and the lite FOV, using cache
-	self:computeFOV(self.sight or 20, "block_sight", function(x, y, dx, dy, sqdist)
-		game.level.map:apply(x, y, fovdist[sqdist])
-	end, true, false, true)
-	self:computeFOV(self.lite, "block_sight", function(x, y, dx, dy, sqdist) game.level.map:applyLite(x, y) end, true, true, true)
+
+	if not self:attr("blind") then
+		-- Handle infravision which allow to see outside of lite radius but with LOS
+		if self:attr("infravision") then
+			local radius = self.infravision
+			local rad2 = math.max(1, math.floor(radius / 4))
+			self:computeFOV(radius, "block_sight", function(x, y, dx, dy, sqdist) if game.level.map(x, y, game.level.map.ACTOR) then game.level.map.seens(x, y, fovdist[sqdist]) end end, true, true, true)
+			self:computeFOV(rad2, "block_sight", function(x, y, dx, dy, sqdist) game.level.map:applyLite(x, y, fovdist[sqdist]) end, true, true, true)
+		end
+
+		-- Compute both the normal and the lite FOV, using cache
+		-- Do it last so it overrides others
+		self:computeFOV(self.sight or 20, "block_sight", function(x, y, dx, dy, sqdist)
+			game.level.map:apply(x, y, fovdist[sqdist])
+		end, true, false, true)
+		if self.lite <= 0 then game.level.map:applyLite(self.x, self.y)
+		else self:computeFOV(self.lite, "block_sight", function(x, y, dx, dy, sqdist) game.level.map:applyLite(x, y) end, true, true, true) end
+
+		-- For each entity, generate lite
+		local uid, e = next(game.level.entities)
+		while uid do
+			if e ~= self and e.lite and e.lite > 0 and e.computeFOV then
+				e:computeFOV(e.lite, "block_sight", function(x, y, dx, dy, sqdist) game.level.map:applyExtraLite(x, y, fovdist[sqdist]) end, true, true)
+			end
+			uid, e = next(game.level.entities, uid)
+		end
+	else
+		self:computeFOV(self.sight or 10, "block_sight") -- Still compute FOV so NPCs may target us even while blinded
+		-- Inner Sight; works even while blinded
+		if self:attr("blind_sight") then
+			self:computeFOV(self:attr("blind_sight"), "block_sight", function(x, y, dx, dy, sqdist) game.level.map:applyLite(x, y, 0.6) end, true, true, true)
+		end	
+	end
 end
+
 
 --- Called before taking a hit, overload mod.class.Actor:onTakeHit() to stop resting and running
 function _M:onTakeHit(value, src)

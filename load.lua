@@ -48,6 +48,7 @@ ActorInventory:defineInventory("OFFHAND", "Offhand", true, "Some tools")
 ActorInventory:defineInventory("BODY", "Body", true, "Armor and such")
 ActorInventory:defineInventory("HEAD", "Head", true, "Hats and such")
 ActorInventory:defineInventory("CLIP", "Clip", true, "Load bullets here")
+ActorInventory:defineInventory("COMBAT_SOFTWARE", "Combat Software", true, "Combat software goes here")
 
 -- Actor AIs
 ActorAI:loadDefinition("/engine/ai/")

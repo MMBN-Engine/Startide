@@ -6,11 +6,12 @@ newTalent{
 	points = 1,
 	mode = "passive",
 	on_learn = function(self, t)
-		self.inc_stats[self.STAT_INT] = self.inc_stats[self.STAT_INT] + 1
-		self:onStatChange(self.STAT_INT, 1)	end,
+		self:incStat(stat.STAT_INT, 1)
+		self:addSlot("COMBAT_SOFTWARE", 2)
+	end,
 	on_unlearn = function(self, t)
-		self.inc_stats[self.STAT_INT] = self.inc_stats[self.STAT_INT] - 1
-		self:onStatChange(self.STAT_INT, -1)
+		self:incStat(stat.STAT_INT, -1)
+		self:addSlot("COMBAT_SOFTWARE", -2)
 	end,
 	info = function(self, t)
 		return [[Increases intelligence by 1 and allow interface with machines.]]

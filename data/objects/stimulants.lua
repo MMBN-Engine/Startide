@@ -17,7 +17,7 @@ newEntity{
 	color = colors.RED,
 	use_simple = { name = "heal",
 		use = function(self, who)
-			who:heal(10 + who:conMod())
+			who:heal(15 + who:conMod())
 			return { used= true, destroy = true, }
 		end
 	},

@@ -10,7 +10,7 @@ require "engine.interface.ActorStats"
 require "engine.interface.ActorTalents"
 require "engine.interface.ActorResource"
 require "engine.interface.ActorFOV"
-require "engine.interface.ActorInventory"
+require "mod.class.interface.ActorInventory"
 require "mod.class.interface.Combat"
 
 local Map = require "engine.Map"
@@ -26,7 +26,7 @@ module(..., package.seeall, class.inherit(
 	engine.interface.ActorTalents,
 	engine.interface.ActorResource,
 	engine.interface.ActorFOV,
-	engine.interface.ActorInventory,
+	mod.class.interface.ActorInventory,
 	mod.class.interface.Combat
 ))
 
@@ -74,7 +74,7 @@ function _M:init(t, no_default)
 	engine.interface.ActorStats.init(self, t)
 	mod.class.interface.ActorLevel.init(self, t)
 	engine.interface.ActorFOV.init(self, t)
-	engine.interface.ActorInventory.init(self, t)
+	mod.class.interface.ActorInventory.init(self, t)
 end
 
 function _M:act()

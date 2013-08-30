@@ -15,7 +15,7 @@ newEntity{
 		name = "power name", 
 		use = function(self,who)
 			who:learnTalentType("interface", true)
-			who:learnTalent(self.T_MACHINE_INTERFACE, true, 1)
+			who:learnTalent(self.T_COMBAT_INTERFACE, true, 1)
 			return { used= true, destroy = true, }
 		end 
 	},

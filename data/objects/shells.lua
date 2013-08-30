@@ -12,7 +12,7 @@ newEntity{
 } 
 
 newEntity{ 
-	base = "BASE_BULLET", 
+	base = "BASE_SHELL", 
 	name = "shells", 
 	level_range = {1, 10}, 
 	cost = 1,

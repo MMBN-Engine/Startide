@@ -14,15 +14,4 @@ newEntity{
 	rarity = 5,
 	encumber = 0,
 	name = "a generic armor",
-} 	
-
-newEntity{ 
-	base = "BASE_HEAVY", 
-	name = "special response vest", 
-	level_range = {1, 10}, 
-	cost = 1, 
-	wielder = {
-		defense = 3,
-		prof_defense = 7,
-	}, 
-} 
+}

@@ -37,20 +37,3 @@ newEntity{
 	cost = 1, 
 	ranged = { num = 2, sides = 12, range = 6 }, 
 }
-
--- Maybe move these to own type later?
-newEntity{ 
-	base = "BASE_LONGARM", 
-	name = "shot gun", 
-	level_range = {1, 10}, 
-	cost = 1, 
-	ranged = { num = 3, sides = 4, range = 4 }, 
-}
-
-newEntity{ 
-	base = "BASE_LONGARM", 
-	name = "sawed off shot gun", 
-	level_range = {1, 10}, 
-	cost = 1, 
-	ranged = { num = 4, sides = 4, range = 3 }, 
-}

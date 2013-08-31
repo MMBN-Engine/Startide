@@ -17,7 +17,11 @@ newBirthDescriptor{
 			{type = "consumable", subtype = "stimulant", name = "stamina stimulant"},
 			{type = "consumable", subtype = "stimulant", name = "stamina stimulant"},
 		},
-		resolvers.equip{ id = true, {type = "armor", subtype = "helmet", name = "miner's helmet"} },
+		resolvers.equip{ id = true, 
+			{type = "armor", subtype = "helmet", name = "miner's helmet"},
+			{type = "weapon", subtype = "handgun", name = "bullets"} ,
+			{type = "ammo", subtype = "bullets", name = "bullets"}
+		},
 		starting_zone = "manufactory",
 		starting_quest = "robot-rampage",
 		starting_intro = "main",

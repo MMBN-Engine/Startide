@@ -123,7 +123,7 @@ function _M:meleeRoll()
 		melee = self.melee		
 	end
 
-	return self:damageRoll(self.melee)
+	return self:damageRoll(melee)
 end
 
 function _M:hasMeleeWeapon()
@@ -175,7 +175,7 @@ function _M:rangedTarget(target, talent, tg)
 		dam = dam + self:rangedRoll()
 		if crit then
 			game.logSeen(self, "%s preforms a critical hit!", srcname)
-			dam = dam + self:rangedRoll(tg)
+			dam = dam + self:rangedRoll()
 		end
 	
 		self:project(tg, target.x, target.y, DamageType.PHYSICAL, dam, {type="gun"})

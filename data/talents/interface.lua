@@ -1,5 +1,7 @@
 newTalentType{ type="combat interface", name = "interface", description = "Interface with weapons" }
 
+local stat = require("engine.interface.ActorStats")
+
 newTalent{
 	name = "Combat Interface",
 	type = {"combat interface", 1},

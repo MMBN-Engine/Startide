@@ -35,6 +35,7 @@ function _M:init(t, no_default)
 	-- self.combat_armor = 0
 	self.defense = self.defense or 10
 	self.atk = self.atk or 0
+	self.crit = self.crit or 0
 	
 	self.ranged_atk = self.ranged_atk or 0
 	self.melee_atk = self.melee_atk or 0

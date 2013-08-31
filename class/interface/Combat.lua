@@ -37,7 +37,7 @@ function _M:meleeTarget(atk, def, target)
 	if target:knowTalent(T_DEFENSIVE_MARTIAL_ARTS) then def = def + 1 end
 
 	local dam = self:strMod() + self.melee_bonus
-	local hit, crit = self:combatRoll(atk, def, 0)
+	local hit, crit = self:combatRoll(atk, def, self.crit)
 	
 	if hit then
 		dam = dam + self:meleeRoll()
@@ -220,7 +220,7 @@ function _M:rangedAttack(target)
 end
 
 function _M:rangedCrit(tg)
-	local crit = 0 + tg.crit
+	local crit = 0 + tg.crit + self.crit
 
 	local weapon = self:hasRangedWeapon()
 	if weapon.subtype and self:hasImprovedCritial(weapon.subtype) then

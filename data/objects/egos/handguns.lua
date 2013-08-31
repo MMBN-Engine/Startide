@@ -18,7 +18,7 @@ newEntity{
 	rarity = 25,
 	cost = 1,
 	wielder = {
-		ranged_attack = resolvers.dice(1,4),
+		ranged_atk = resolvers.dice(1,4),
 	},
 }
 

@@ -13,6 +13,7 @@ newEntity{
 	max_life = resolvers.rngavg(5,9),
 	life_rating = 5,
 	melee = {num = 1, sides = 4},
+	infravision = 10,
 	desc = [[A machine with large loading forks. It was made for manual work.]],
 }
 
@@ -31,6 +32,7 @@ newEntity{
 	ranged = {num = 1, sides = 3, range = 4, no_ammo = true,},
 	talents = {
 		[ActorTalents.T_SHOOT] = 1,
-	}, 
+	},
+	infravision = 10,
 	desc = [[Armed with rubber bullets, it was designed more for crowd control than subduing an individual.]],
 }

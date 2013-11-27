@@ -10,7 +10,6 @@ newEntity{
 	defense = 0,
 	size = 0,
 	life_rating = 0,
-	faction = "neutral",  
 }
 
 newEntity{
@@ -25,5 +24,4 @@ newEntity{
 	defense = 0,
 	size = 0,
 	life_rating = 0,
-	faction = "neutral",
 }

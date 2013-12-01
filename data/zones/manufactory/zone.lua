@@ -32,6 +32,11 @@ return {
 	},
 	levels =
 	{
+		[1] = {
+			generator = { map = {
+				up = "FLOOR",
+			}, },
+		},
 		[3] = {
 			generator = { map = {
 				down = "EXIT",

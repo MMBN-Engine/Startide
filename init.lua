@@ -11,3 +11,5 @@ It is a unprecedented time of growth for the Children of Earth. Mankind has upli
 But all is not well. Luddite factions on Mars oppress the local machine intelligences. Uplifts are discriminated against in nearly every society. The Outer System is in a constant state of war. Meanwhile, the Technarch of Earth sees all this and contemplates war to bring order to chaos.
 ]]
 starter = "mod.load"
+
+background_name = {"startide"}

@@ -122,7 +122,7 @@ end
 function _M:tooltip()
 	return ([[%s%s
 #00ffff#Level: %d
-#ff0000#HP: %d / %d
+#ff0000#HP: #ffffff#%d / %d
 Stats: %d /  %d / %d / %d
 %s]]):format(
 	self:getDisplayString(),

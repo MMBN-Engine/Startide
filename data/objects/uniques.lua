@@ -12,6 +12,7 @@ newEntity{
 	rarity = 15,
 	encumber = 0,
 	unique = true,
+	level_range = {10, 20},
 	ranged = { 
 		num = 1, 
 		sides = 3, 
@@ -43,4 +44,26 @@ newEntity{
 		end
 	end,
 	desc = [[One of the last remaining weapons from the Resource and Relocation Wars on Old Earth.]],
+}
+
+newEntity{ 
+	define_as = "SLEEPLESS_EYEs", 
+	type = "implant", 
+	subtype = "eye", 
+	display = "-", 
+	color = colors.GREEN, 
+	name = "sleepless eyes",
+	rarity = 15,
+	encumber = 0,
+	unique = true,
+	level_range = {1, 7},
+	use_simple = { 
+		name = "power name", 
+		use = function(self,who)
+			who.infravision = 10
+			blind_immune = true
+			return { used= true, destroy = true, }
+		end 
+	},
+	desc = [[A varient of an old military design, these implant allow for improved night vision and provide defense against blinding.]],
 }

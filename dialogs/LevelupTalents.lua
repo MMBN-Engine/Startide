@@ -201,7 +201,8 @@ Mouse: #00FF00#Left click#FFFFFF# to learn; #00FF00#right click#FFFFFF# to unlea
 		helplines = str:splitLines(self.iw / 2 - 10, self.font)
 
 		lines = self.actor:getTalentFullDescription(t):splitLines(self.iw / 2 - 10, self.font)
-		local req = self.actor:getTalentReqDesc(self.list[self.sel].talent, 1):toTString()
+		--local req = self.actor:getTalentReqDesc(self.list[self.sel].talent, 1):toTString()
+		local req = tostring(self.actor:getTalentReqDesc(self.list[self.sel].talent, 1))
 		reqlines = req:splitLines(self.iw / 2 - 10, self.font)
 
 	end
@@ -222,8 +223,8 @@ Mouse: #00FF00#Left click#FFFFFF# to learn; #00FF00#right click#FFFFFF# to unlea
 		h = h + self.font:lineSkip()
 		self:drawWBorder(s, self.iw / 2 + self.iw / 6, h - 0.5 * self.font:lineSkip(), self.iw / 6)
 		for i = 1, #reqlines do
-			--s:drawColorStringBlended(self.font, reqlines[i], self.iw / 2 + 5, h)
-			--h = h + self.font:lineSkip()
+			s:drawColorStringBlended(self.font, reqlines[i], self.iw / 2 + 5, h)
+			h = h + self.font:lineSkip()
 		end
 
 		for i = 1, #lines do

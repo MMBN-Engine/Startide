@@ -1,22 +1,3 @@
--- ToME - Tales of Middle-Earth
--- Copyright (C) 2009, 2010, 2011, 2012 Nicolas Casalini
---
--- This program is free software: you can redistribute it and/or modify
--- it under the terms of the GNU General Public License as published by
--- the Free Software Foundation, either version 3 of the License, or
--- (at your option) any later version.
---
--- This program is distributed in the hope that it will be useful,
--- but WITHOUT ANY WARRANTY; without even the implied warranty of
--- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--- GNU General Public License for more details.
---
--- You should have received a copy of the GNU General Public License
--- along with this program.  If not, see <http://www.gnu.org/licenses/>.
---
--- Nicolas Casalini "DarkGod"
--- darkgod@te4.org
-
 require "engine.class"
 local Dialog = require "engine.ui.Dialog"
 local Textzone = require "engine.ui.Textzone"
@@ -34,7 +15,7 @@ function _M:init(actor)
 	self:generateList()
 
 	self.c_desc = Textzone.new{width=self.iw, auto_height=true, text=[[You have #LIGHT_RED#died#LAST#!
-Death in Example is usually permanent, but if you have a means of resurrection it will be proposed in the menu below.
+Death in Startide is usually permanent, but if you have a means of resurrection it will be proposed in the menu below.
 You can dump your character data to a file to remember her/him forever, or you can exit and try once again to survive in the wilds!
 ]]}
 	self.c_list = List.new{width=self.iw, nb_items=#self.list, list=self.list, fct=function(item) self:use(item) end}

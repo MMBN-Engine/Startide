@@ -65,8 +65,8 @@ function _M:use(item)
 			if e.unique and e.define_as ~= "VOICE_SARUMAN" and e.define_as ~= "ORB_MANY_WAYS_DEMON" then
 				local a = game.zone:finishEntity(game.level, "object", e)
 				a.no_unique_lore = true -- to not spam
-				a:identify(true)
-				if a.name == a.unided_name then print("=================", a.name) end
+				--a:identify(true)
+				--if a.name == a.unided_name then print("=================", a.name) end
 				game.zone:addEntity(game.level, a, "object", game.player.x, game.player.y)
 			end
 		end

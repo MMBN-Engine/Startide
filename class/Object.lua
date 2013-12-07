@@ -61,6 +61,15 @@ function _M:getDice(t)
 	return dice
 end
 
+function _M:getDamageType(dam)
+	local type = DamageType:get(dam)
+
+	local text = type.text_color or "#aaaaaa#"
+	text = text..type.name
+	
+	return text
+end
+
 function _M:getCapacity()
 	return " "..self.remaining.."/"..self.capacity
 end
@@ -81,6 +90,39 @@ function _M:getName(t)
 	end
 
 	return name
+end
+
+--- Gets the full desc of the object
+function _M:getDesc()
+	local info = self:getName(t)
+	if self.desc then
+		info = info.."\n\n"..self.desc
+	end
+	if self.ranged then
+		info = info.."\n\nRanged Attack:"
+		info = info.."\n  Damage: "..self:getDice(self.ranged)
+		info = info.."\n  Range: "..self.ranged.range
+		if self.ranged.radius then
+			info = info.."\n  Range: "..self.ranged.radius
+		end
+		if self.ranged.damage_type then
+			info = info.."\n  Damage Type: "..self:getDamageType(self.ranged.damage_type)
+		end
+	end
+	if self.melee then
+		info = info.."\n\nMelee Attack:"
+		info = info.."\n  Damage:"..self:getDice(self.melee)
+		if self.melee.damage_type then
+			info = info.."\n  Damage Type:  "..self:getDamageType(self.ranged.damage_type)
+		end
+	end
+	if self.wielder then
+		if self.wielder.defense then
+			info = info.."\n\nDefense: "..self.wielder.defense
+			info = info.."\n\nProf. Defense: "..self.wielder.prof_derense
+		end
+	end
+	return info
 end
 
 function _M:tooltip(x, y)

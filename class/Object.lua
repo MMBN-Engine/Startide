@@ -74,8 +74,14 @@ function _M:getCapacity()
 	return " "..self.remaining.."/"..self.capacity
 end
 
-function _M:getName(t)
-	local name = self.name
+function _M:getName()
+	local name
+	if self.unique then
+		name = tostring(tstring{{"color",self.color_r,self.color_g,self.color_b},self.name,{"color","WHITE"}})
+	else
+		name = self.name
+	end
+
 
 	if self.melee then
 		name = name..self:getDice(self.melee).."(melee)"
@@ -95,7 +101,7 @@ end
 --- Gets the full desc of the object
 --- Conver to tstring later
 function _M:getDesc()
-	local info = self:getName(t)
+	local info = self:getName()
 	if self.desc then
 		info = info.."\n\n"..self.desc
 	end

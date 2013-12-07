@@ -206,7 +206,7 @@ function _M:rangedTarget(target, talent, tg)
 	self:useEnergy(game.energy_to_act)
 
 	if weapon.charging then
-		weapon.ranged.num = weapon.min_charge
+		weapon.ranged.num = weapon.min_charge-1
 	end
 end
 

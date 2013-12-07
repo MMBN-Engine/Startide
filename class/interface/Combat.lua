@@ -154,13 +154,15 @@ function _M:rangedTarget(target, talent, tg)
 		return nil
 	end
 
-	local tg = tg or {type="bolt"}
+	local tg = tg or {type="ball"}
 	tg.range = tg.range or weapon.ranged.range
 	tg.radius = weapon.ranged.radius or 0
 	tg.talent = tg.talent or talent
 	tg.atk = tg.atk or 0
 	tg.bonus = tg.bonus or 0
 	tg.crit = tg.crit or 0
+
+	local damage_type = weapon.ranged.damage_type or DamageType.PHYSICAL
 
 	local x, y, target = self:getTarget(tg)
 	if not x or not y or not target then return nil end
@@ -170,15 +172,15 @@ function _M:rangedTarget(target, talent, tg)
 	local dam = self.ranged_bonus + tg.bonus
 	local hit, crit = self:combatRoll(self:rangedAttack(target) + tg.atk, target:getDefense(), self:rangedCrit(tg))
 	
-	if hit then
+	if hit or weapon.never_miss then
 		-- Roll and apply damage
 		dam = dam + self:rangedRoll()
-		if crit then
+		if crit and not weapon.no_crit then
 			game.logSeen(self, "%s preforms a critical hit!", srcname)
 			dam = dam + self:rangedRoll()
 		end
 	
-		self:project(tg, target.x, target.y, DamageType.PHYSICAL, dam, {type="gun"})
+		self:project(tg, target.x, target.y, damage_type, dam, {type = weapon.particle or "gun"})
 
 		-- Project from ammo (incindiary bullets etc.)
 		if ammo and ammo.project then
@@ -202,6 +204,10 @@ function _M:rangedTarget(target, talent, tg)
 	end
 
 	self:useEnergy(game.energy_to_act)
+
+	if weapon.charging then
+		weapon.ranged.num = weapon.min_charge
+	end
 end
 
 function _M:rangedAttack(target)

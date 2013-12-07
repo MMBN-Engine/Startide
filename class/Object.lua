@@ -21,7 +21,7 @@ function _M:init(t, no_default)
 end
 
 function _M:canAct()
-	if self.power_regen or self.use_talent then return true end
+	if self.power_regen or self.use_talent or self.can_act then return true end
 	return false
 end
 

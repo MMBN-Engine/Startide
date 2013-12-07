@@ -119,7 +119,7 @@ function _M:getDesc()
 	if self.wielder then
 		if self.wielder.defense then
 			info = info.."\n\nDefense: "..self.wielder.defense
-			info = info.."\n\nProf. Defense: "..self.wielder.prof_derense
+			info = info.."\n\nProf. Defense: "..self.wielder.prof_defense
 		end
 	end
 	return info

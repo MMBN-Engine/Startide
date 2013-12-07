@@ -93,6 +93,7 @@ function _M:getName(t)
 end
 
 --- Gets the full desc of the object
+--- Conver to tstring later
 function _M:getDesc()
 	local info = self:getName(t)
 	if self.desc then
@@ -126,10 +127,11 @@ function _M:getDesc()
 end
 
 function _M:tooltip(x, y)
-	local str = self:getDesc({do_color=true}, game.player:getInven(self:wornInven()))
+	--local str = self:getDesc({do_color=true}, game.player:getInven(self:wornInven()))
+	local str = self:getDesc():toTString()
 	local nb = game.level.map:getObjectTotal(x, y)
 	if nb == 2 then 
-		--str:add(true, "---", true, "You see one more object.")
+		str:add(true, "---", true, "You see one more object.")
 	elseif nb > 2 then 
 		str:add(true, "---", true, "You see "..(nb-1).." more objects.")
 	end

@@ -67,3 +67,19 @@ newEntity{
 	},
 	desc = [[A varient of an old military design, these implant allow for improved night vision and provide defense against blinding.]],
 }
+
+newEntity{ 
+	base = "BASE_HANDGUN", 
+	name = "neuropistol", 
+	level_range = {1, 5}, 
+	cost = 1,
+	color = colors.CADET_BLUE,
+	unique = true, 
+	ranged = { num = 2, sides = 4, range = 8 },
+	rarity = 150,
+	cyber_wielder = {
+		ranged_atk = 4,
+		ranged_bonus = 2,
+	},
+	desc = [[An old weapon from an obscure war in the Outer System, it can only be fully utilized by someone with combat implants.]],
+}

@@ -13,3 +13,20 @@ function _M:addSlot(inven_id, num)
 		self.inven_id[self["INVEN_"..inven_id]].max = self.inven[self["INVEN_"..inven_id]] + num
 	end
 end
+
+--- Call when an object is worn
+function _M:onWear(o)
+	-- Apply wielder properties
+	o.wielded = {}
+	o:check("on_wear", self)
+	if o.wielder then
+		for k, e in pairs(o.wielder) do
+			o.wielded[k] = self:addTemporaryValue(k, e)
+		end
+	end
+	if o.cyber_wielder and self:knowTalent(self.T_COMBAT_INTERFACE) then
+		for k, e in pairs(o.cyber_wielder) do
+			o.wielded[k] = self:addTemporaryValue(k, e)
+		end
+	end
+end

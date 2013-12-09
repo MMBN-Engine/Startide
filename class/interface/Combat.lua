@@ -34,7 +34,7 @@ end
 function _M:meleeTarget(atk, def, target)
 	local srcname = game.level.map.seens(self.x, self.y) and self.name:capitalize() or "Something"
 
-	if target:knowTalent(T_DEFENSIVE_MARTIAL_ARTS) then def = def + 1 end
+	if target:knowTalent(target.T_DEFENSIVE_MARTIAL_ARTS) then def = def + 1 end
 
 	local dam = self:strMod() + self.melee_bonus
 	local hit, crit = self:combatRoll(atk, def, self.crit)

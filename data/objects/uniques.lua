@@ -11,7 +11,7 @@ newEntity{
 	name = "plasma cannon",
 	rarity = 200,
 	encumber = 0,
-	unique = true,
+	--unique = true,
 	level_range = {10, 20},
 	ranged = { 
 		num = 1, 
@@ -55,13 +55,13 @@ newEntity{
 	name = "sleepless eyes",
 	rarity = 150,
 	encumber = 0,
-	unique = true,
+	--unique = true,
 	level_range = {1, 7},
 	use_simple = { 
 		name = "power name", 
 		use = function(self,who)
 			who.infravision = 10
-			blind_immune = true
+			who.blind_immune = true
 			return { used= true, destroy = true, }
 		end 
 	},
@@ -74,7 +74,7 @@ newEntity{
 	level_range = {1, 5}, 
 	cost = 1,
 	color = colors.CADET_BLUE,
-	unique = true, 
+	--unique = true, 
 	ranged = { num = 2, sides = 4, range = 8 },
 	rarity = 150,
 	cyber_wielder = {

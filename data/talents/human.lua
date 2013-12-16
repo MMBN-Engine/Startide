@@ -49,3 +49,13 @@ newTalent{
 		return [[Increase mental save by +1.]]
 	end,
 }
+
+newTalent{
+	name = "Iron Will",
+	type = {"human", 1},
+	points = 1,
+	mode = "passive",
+	info = function(self, t)
+		return [[Gain a +2 defense bonus when HP is below 20%.]]
+	end,
+}

@@ -105,9 +105,13 @@ function _M:getDefense()
 		def = def - 2
 	end
 	
-	local hack = self:hasEffect(EFF_HACKED)
+	local hack = self:hasEffect(self.EFF_HACKED)
 	if hack then
 		def = def - 2
+	end
+
+	if self:knowTalent(self.T_IRON_WILL) and self.life < 0.2*self.life then
+		def = def + 2
 	end
 
 	return def

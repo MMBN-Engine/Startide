@@ -27,7 +27,7 @@ newBirthDescriptor{
 	name = "Human",
 	desc =
 	{
-		"Homo sapiens.",
+		"#{italic}#Homo sapiens#{normal}#",
 		"Humans are from the planet Earth.",
 		"#GOLD#Stat modifiers:",
 		"#LIGHT_BLUE# * +0 Strength, +0 Dexterity",
@@ -52,7 +52,7 @@ newBirthDescriptor{
 	name = "Delver",
 	desc =
 	{
-		"Homo speluncus.",
+		"#{italic}#Homo speluncus#{normal}#",
 		"Originally engineered to work in low light environments by Desantis Space, they eventually developed a freestanding culture of their own.",
 		"#GOLD#Stat modifiers:",
 		"#LIGHT_BLUE# * +0 Strength, +0 Dexterity",
@@ -83,7 +83,7 @@ newBirthDescriptor{
 	name = "Chimpanzee",
 	desc =
 	{
-		"Pan loquens.",
+		"#{italic}#Pan loquens#{normal}#",
 		"Uplifted by humans, chimps are much like their",
 		"elder cousins.",
 		"#GOLD#Stat modifiers:",
@@ -107,7 +107,7 @@ newBirthDescriptor{
 	name = "Gorilla",
 	desc =
 	{
-		"Gorilla arcis",
+		"#{italic}#Gorilla arcis#{normal}#",
 		"Gorillas are reknown for their great strength, but face a great deal of social stigma.",
 		"#GOLD#Stat modifiers:",
 		"#LIGHT_BLUE# * +4 Strength, -3 Dexterity",

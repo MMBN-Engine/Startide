@@ -5,6 +5,7 @@ load("/data/talents/damage-reduction.lua")
 load("/data/talents/ranged.lua")
 load("/data/talents/general.lua")
 load("/data/talents/hacking.lua")
+load("/data/talents/delver.lua")
 
 newTalentType{ type="generic", name = "generic", description = "Generic talents" }
 

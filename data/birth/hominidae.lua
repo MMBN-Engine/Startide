@@ -61,16 +61,17 @@ newBirthDescriptor{
 		"#LIGHT_BLUE# * Armor Proficiency (Light)",
 		"#GOLD#Special:",
 		"#LIGHT_BLUE# * 10 infravision",
-		"#LIGHT_BLUE# * Light Sensitive: -2 defense when holding light",
+		"#LIGHT_BLUE# * Light Sensitive: +1",
 	},
 	stats = { str=0, dex=0, int = 2, con=0 },
 	copy = {
 		subtype = "human",
 		infravision = 10,
-		light_sensive = true,
+		light_sensive = 1,
 	},
 	talents_types = {
 		["human"] = {true, 0},
+		["delver"] = {true, 0},
 	},
 	talents = {
 		[ActorTalents.T_LIGHT_PROFICIENCY] = 1,

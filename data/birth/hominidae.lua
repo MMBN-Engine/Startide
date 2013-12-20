@@ -67,7 +67,7 @@ newBirthDescriptor{
 	copy = {
 		subtype = "human",
 		infravision = 10,
-		light_sensive = 1,
+		light_sensitive = 1,
 	},
 	talents_types = {
 		["human"] = {true, 0},

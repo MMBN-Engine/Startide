@@ -19,7 +19,7 @@ newBirthDescriptor{
 	copy = {
 		type = "hominid",
 	},
-	body = { INVEN = 10, MAINHAND = 1, OFFHAND = 1, BODY = 1, HEAD = 1, CLIP = 1, },
+	body = { INVEN = 10, MAINHAND = 1, OFFHAND = 1, BODY = 1, HEAD = 1, CLIP = 1, EYES = 1,},
 }
 
 newBirthDescriptor{

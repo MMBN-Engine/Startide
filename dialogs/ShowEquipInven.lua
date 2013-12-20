@@ -7,11 +7,12 @@ local Separator = require "engine.ui.Separator"
 
 module(..., package.seeall, class.inherit(Dialog))
 
-function _M:init(title, actor, filter, action, on_select)
+function _M:init(title, actor, filter, type, action, on_select)
 	self.action = action
 	self.filter = filter
 	self.actor = actor
 	self.on_select = on_select
+	self.type = type
 
 	Dialog.init(self, title or "Inventory", math.max(800, game.w * 0.8), math.max(600, game.h * 0.8))
 
@@ -123,7 +124,7 @@ function _M:generateList(no_update)
 	local i = 1
 	self.max_h = 0
 	for inven_id =  1, #self.actor.inven_def do
-		if self.actor.inven[inven_id] and (self.actor.inven_def[inven_id].is_worn or self.actor.inven_def[inven_id].is_shown_equip) then
+		if self.actor.inven[inven_id] and self.actor.inven_def[inven_id].description == self.type and(self.actor.inven_def[inven_id].is_worn or self.actor.inven_def[inven_id].is_shown_equip) then
 			list[#list+1] = { id=#list+1, char="", name=tstring{{"font", "bold"}, self.actor.inven_def[inven_id].name, {"font", "normal"}}, color={0x90, 0x90, 0x90}, inven=inven_id, cat="", encumberance="", desc=self.actor.inven_def[inven_id].description }
 			self.max_h = math.max(self.max_h, #self.actor.inven_def[inven_id].description:splitLines(self.iw - 10, self.font))
 

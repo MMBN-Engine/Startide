@@ -1,5 +1,6 @@
 require "engine.class"
 local Base = require "engine.interface.ActorInventory"
+local ShowEquipInven = require "mod.dialogs.ShowEquipInven"
 
 --- Interface to add leveling capabilities to actors
 -- Defines the exp property, which is the current experience, level which is the current level and exp_worth which is a multiplier
@@ -12,6 +13,16 @@ function _M:addSlot(inven_id, num)
 	else
 		self.inven_id[self["INVEN_"..inven_id]].max = self.inven[self["INVEN_"..inven_id]] + num
 	end
+end
+
+--- Show combined equipment/inventory dialog
+-- @param inven the inventory (from self:getInven())
+-- @param filter nil or a function that filters the objects to list
+-- @param action a function called when an object is selected
+function _M:showEquipInven(title, filter, type, action, on_select)
+	local d = ShowEquipInven.new(title, self, filter, type, action, on_select)
+	game:registerDialog(d)
+	return d
 end
 
 --- Call when an object is worn

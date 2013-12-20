@@ -348,7 +348,7 @@ function _M:setupCommands()
 		SHOW_INVENTORY = function()
 			if self.player.no_inventory_access then return end
 			local d
-			d = self.player:showEquipInven("Inventory", nil, function(o, inven, item, button, event)
+			d = self.player:showEquipInven("Inventory", nil, "normal", function(o, inven, item, button, event)
 				if not o then return end
 				local ud = require("mod.dialogs.UseItem").new(event == "button", self.player, o, item, inven, function(_, _, _, stop)
 					d:generate()

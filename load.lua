@@ -43,12 +43,14 @@ ActorStats:defineStat("Dexterity",	"dex", 10, 1, 20, "Dexterity defines your cha
 ActorStats:defineStat("Intelligence",	"int", 10, 1, 20, "Intelligence defines your character's metal abilities. It affects you skill in using devices.")
 ActorStats:defineStat("Constitution",	"con", 10, 1, 20, "Constitution defines your character's ability to withstand and resist damage. It increases your maximum life and physical resistance.")
 
-ActorInventory:defineInventory("MAINHAND", "Mainhand", true, "Mostly weapons")
-ActorInventory:defineInventory("OFFHAND", "Offhand", true, "Some tools")
-ActorInventory:defineInventory("BODY", "Body", true, "Armor and such")
-ActorInventory:defineInventory("HEAD", "Head", true, "Hats and such")
-ActorInventory:defineInventory("CLIP", "Clip", true, "Load bullets here")
-ActorInventory:defineInventory("COMBAT_SOFTWARE", "Combat Software", true, "Combat software goes here")
+ActorInventory:defineInventory("MAINHAND", "Mainhand", true, "normal")
+ActorInventory:defineInventory("OFFHAND", "Offhand", true, "Normal")
+ActorInventory:defineInventory("BODY", "Body", true, "normal")
+ActorInventory:defineInventory("HEAD", "Head", true, "normal")
+ActorInventory:defineInventory("CLIP", "Clip", true, "normal")
+ActorInventory:defineInventory("COMBAT_SOFTWARE", "Combat Software", true, "normal")
+
+ActorInventory:defineInventory("EYES", "Eyes", true, "implant")
 
 -- Actor AIs
 ActorAI:loadDefinition("/engine/ai/")

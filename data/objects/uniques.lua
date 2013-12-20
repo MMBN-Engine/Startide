@@ -47,24 +47,27 @@ newEntity{
 }
 
 newEntity{ 
-	define_as = "SLEEPLESS_EYEs", 
+	define_as = "SLEEPLESS_EYES", 
 	type = "implant", 
 	subtype = "eye", 
-	display = "-", 
+	display = "-",
+	slot = "EYES",
 	color = colors.GREEN, 
 	name = "sleepless eyes",
 	rarity = 150,
 	encumber = 0,
 	--unique = true,
 	level_range = {1, 7},
-	use_simple = { 
-		name = "power name", 
-		use = function(self,who)
-			who.infravision = 10
-			who.blind_immune = true
-			return { used= true, destroy = true, }
-		end 
-	},
+	on_wear = function(self, who)
+		who.infravision = 10
+		who.blind_immune = 1
+		who.sight = 20
+	end,
+	on_takeoff = function(self, who)
+		who.infravision = 0
+		who.blind_immune = 0
+		who.sight = 0
+	end,
 	desc = [[A varient of an old military design, these implant allow for improved night vision and provide defense against blinding.]],
 }
 

@@ -52,6 +52,9 @@ function _M:init(t, no_default)
 	self.unused_stats = self.unused_stats or 6
 	self.unused_talents = self.unused_talents or 4
 
+	self.infravision = self.infravision or 0
+	self.light_sensitive = self.light_sensitive or 0
+
 	self.appearance = self.appearance or {}
 
 	-- Saving throws

@@ -10,7 +10,8 @@ newBirthDescriptor{
 		{
 			__ALL__ = "disallow",
 			Human = "allow",
-			Delver = function() return profile.mod.allow_build.delver and "allow" or "disallow" end,
+			--Delver = function() return profile.mod.allow_build.delver and "allow" or "disallow" end,
+			Delver = "allow",
 			Chimpanzee = "allow",
 			Gorilla = "allow",
 			Orangutan = function() return profile.mod.allow_build.orangutan and "allow" or "disallow" end,
@@ -38,6 +39,11 @@ newBirthDescriptor{
 	stats = { str=0, dex=0, int = 2, con=0 },
 	copy = {
 		subtype = "human",
+		natural_vision = {
+			sight = 20,
+			infravision = 0,
+			light_sensitive = 0,
+		}
 	},
 	talents_types = {
 		["human"] = {true, 0},
@@ -68,6 +74,11 @@ newBirthDescriptor{
 		subtype = "human",
 		infravision = 10,
 		light_sensitive = 1,
+		natural_vision = {
+			sight = 20,
+			infravision = 10,
+			light_sensitive = 1,
+		}
 	},
 	talents_types = {
 		["human"] = {true, 0},

@@ -52,6 +52,8 @@ function _M:init(t, no_default)
 	self.unused_stats = self.unused_stats or 6
 	self.unused_talents = self.unused_talents or 4
 
+	self.appearance = self.appearance or {}
+
 	-- Saving throws
 	self.saves = self.saves or {}
 	self.saves.fortitude = self.saves.fortitude or 0

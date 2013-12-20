@@ -3,6 +3,7 @@ newEntity{
 	slot = "BODY", 
 	type = "armor", 
 	subtype="light", 
+	require = { size = 3,},
 	display = "[", 
 	color=colors.UMBER, 
 	rarity = 5,

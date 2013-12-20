@@ -114,10 +114,13 @@ newBirthDescriptor{
 		"#LIGHT_BLUE# * -1 Intelligence, +2 Constitution",
 		"#GOLD#Talents:",
 		"#LIGHT_BLUE# * Brawl",
+		"#GOLD#Special:",
+		"#LIGHT_BLUE# * Large - Can weild heavy weapons in one hand but cannot wear most armors",
 	},
 	stats = { str=4, dex=-3, int = -1, con=2 },
 	copy = {
 		subtype = "gorilla",
+		size = 4,
 	},
 	talents_types = {
 		["gorilla"] = {true, 0},

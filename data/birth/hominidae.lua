@@ -12,7 +12,7 @@ newBirthDescriptor{
 			Human = "allow",
 			Delver = function() return profile.mod.allow_build.delver and "allow" or "disallow" end,
 			Chimpanzee = "allow",
-			Gorilla = function() return profile.mod.allow_build.gorrila and "allow" or "disallow" end,
+			Gorilla = "allow",
 			Orangutan = function() return profile.mod.allow_build.orangutan and "allow" or "disallow" end,
 		},
 	},
@@ -107,6 +107,8 @@ newBirthDescriptor{
 	name = "Gorilla",
 	desc =
 	{
+		"Gorilla arcis",
+		"Gorillas are reknown for their great strength, but face a great deal of social stigma.",
 		"#GOLD#Stat modifiers:",
 		"#LIGHT_BLUE# * +4 Strength, -3 Dexterity",
 		"#LIGHT_BLUE# * -1 Intelligence, +2 Constitution",

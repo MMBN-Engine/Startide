@@ -1,5 +1,5 @@
 return {
-	name = "Hanger",
+	name = "Hangar",
 	level_range = {1, nil},
 	max_level = 1,
 	--decay = {300, 800},

@@ -2,7 +2,7 @@ local ActorTalents = require("engine.interface.ActorTalents")
 
 newEntity{ 
 	define_as = "NPC_LOADING_BOT",
-	type = "machine", subtype = "machine",
+	type = "machine", subtype = "labor",
 	display = "x",
 	ai = "dumb_talented_simple", ai_state = { talent_in=1, },
 	name = "loading bot", color=colors.RED,
@@ -20,7 +20,7 @@ newEntity{
 newEntity{
 	define_as = "NPC_SECURITY_BOT",
 	name = "security bot", color=colors.BLUE,
-	type = "machine", subtype = "machine",
+	type = "machine", subtype = "security",
 	display = "x",
 	ai = "dumb_talented_simple", ai_state = { talent_in=1, },
 	level_range = {1, 4}, exp_worth = 1,

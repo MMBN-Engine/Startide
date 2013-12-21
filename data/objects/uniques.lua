@@ -11,7 +11,7 @@ newEntity{
 	name = "plasma cannon",
 	rarity = 200,
 	encumber = 0,
-	--unique = true,
+	unique = true,
 	level_range = {10, 20},
 	ranged = { 
 		num = 1, 
@@ -57,7 +57,7 @@ newEntity{
 	rarity = 150,
 	medical = true,
 	encumber = 0,
-	--unique = true,
+	unique = true,
 	level_range = {1, 7},
 	on_wear = function(self, who)
 		who.infravision = 10
@@ -77,12 +77,41 @@ newEntity{
 }
 
 newEntity{ 
+	define_as = "EAGLE_EYES", 
+	type = "implant", 
+	subtype = "eye", 
+	display = "-",
+	slot = "EYES",
+	color = colors.LIGHT_BLUE, 
+	name = "eagle eyes",
+	rarity = 200,
+	medical = true,
+	encumber = 0,
+	unique = true,
+	level_range = {1, 7},
+	on_wear = function(self, who)
+		who.infravision = 0
+		who.sight = 25
+		who.light_sensitive = 0
+	end,
+	on_takeoff = function(self, who)
+		who.infravision = who.natural_vision.infravision
+		who.sight = who.natural_vision.sight
+		who.light_sensitive = who.natural_vision.light_sensitive 
+	end,
+	wielder = {
+		appearance = {uncanny = 2,},
+	},
+	desc = [[Based on the eyes of eagles, this implants give you exceptional vision range.]],
+}
+
+newEntity{ 
 	base = "BASE_HANDGUN", 
 	name = "neuropistol", 
 	level_range = {1, 5}, 
 	cost = 1,
 	color = colors.CADET_BLUE,
-	--unique = true, 
+	unique = true, 
 	ranged = { num = 2, sides = 4, range = 8 },
 	rarity = 150,
 	cyber_wielder = {

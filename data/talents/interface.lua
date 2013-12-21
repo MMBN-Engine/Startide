@@ -1,10 +1,10 @@
-newTalentType{ type="combat interface", name = "interface", description = "Interface with weapons" }
+newTalentType{ type="interface", name = "interface", description = "Interface with weapons" }
 
 local stat = require("engine.interface.ActorStats")
 
 newTalent{
 	name = "Combat Interface",
-	type = {"combat interface", 1},
+	type = {"interface", 1},
 	points = 1,
 	mode = "passive",
 	on_learn = function(self, t)
@@ -22,7 +22,7 @@ newTalent{
 
 newTalent{
 	name = "Improved Combat Interface",
-	type = {"combat interface", 2},
+	type = {"interface", 2},
 	points = 1,
 	mode = "passive",
 	on_learn = function(self, t)
@@ -38,7 +38,7 @@ newTalent{
 
 newTalent{
 	name = "Advanced Combat Interface",
-	type = {"combat interface", 3},
+	type = {"interface", 3},
 	points = 1,
 	mode = "passive",
 	on_learn = function(self, t)

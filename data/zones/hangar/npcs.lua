@@ -1,0 +1,15 @@
+newEntity{
+	define_as = "NPC_MEDICUM",
+	name = "medicum", color=colors.CRIMSON,
+	type = "machine", subtype = "medical",
+	display = "x",
+	level_range = {5, nil}, exp_worth = 1,
+	size = 3,
+	life_rating = 6,
+	max_life = 6,
+	stats = { str = 4, dex = 12, int = 15, con = 8 },
+	infravision = 10,
+	faction = "Neutral",
+	can_talk = "medicum",
+	desc = [[A medical machine. It may prove to be useful.]],
+}

@@ -105,6 +105,9 @@ function _M:getDesc()
 	if self.desc then
 		info = info.."\n\n"..self.desc
 	end
+	if self.medical then
+		info = info.."\n\n".."You need medical assistance to use this."
+	end
 	if self.ranged then
 		info = info.."\n\nRanged Attack:"
 		info = info.."\n  Damage: "..self:getDice(self.ranged)

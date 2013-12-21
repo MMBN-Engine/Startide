@@ -55,19 +55,24 @@ newEntity{
 	color = colors.GREEN, 
 	name = "sleepless eyes",
 	rarity = 150,
+	medical = true,
 	encumber = 0,
 	--unique = true,
 	level_range = {1, 7},
 	on_wear = function(self, who)
 		who.infravision = 10
-		who.blind_immune = 1
 		who.sight = 20
+		who.light_sensitive = 0
 	end,
 	on_takeoff = function(self, who)
-		who.infravision = 0
-		who.blind_immune = 0
-		who.sight = 0
+		who.infravision = who.natural_vision.infravision
+		who.sight = who.natural_vision.sight
+		who.light_sensitive = who.natural_vision.light_sensitive 
 	end,
+	wielder = {
+		blind_immune = 1,
+		appearance = {military = 2,},
+	},
 	desc = [[A varient of an old military design, these implant allow for improved night vision and provide defense against blinding.]],
 }
 

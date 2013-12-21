@@ -39,6 +39,7 @@ return {
 		},
 		[3] = {
 			generator = { map = {
+				force_last_stair = true,
 				down = "EXIT",
 			}, },
 		},

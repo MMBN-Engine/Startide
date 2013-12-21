@@ -6,11 +6,12 @@ local Map = require "engine.Map"
 
 module(..., package.seeall, class.inherit(engine.ui.Dialog))
 
-function _M:init(center_mouse, actor, object, item, inven, onuse)
+function _M:init(center_mouse, actor, object, item, inven, type, onuse)
 	self.actor = actor
 	self.object = object
 	self.inven = inven
 	self.item = item
+	self.type = type
 	self.onuse = onuse
 
 	self:generateList()
@@ -58,7 +59,7 @@ function _M:generateList()
 	local list = {}
 
 	if self.object:canUseObject() then list[#list+1] = {name="Use", action="use"} end
-	if self.inven == self.actor.INVEN_INVEN and self.object:wornInven() and self.actor:getInven(self.object:wornInven()) then list[#list+1] = {name="Wield/Wear", action="wear"} end
+	if self.inven == self.actor.INVEN_INVEN and self.object:wornInven() and self.actor:getInven(self.object:wornInven()) and self.actor.inven_def[self.object.slot].description == self.type then list[#list+1] = {name="Wield/Wear", action="wear"} end
 	if self.inven ~= self.actor.INVEN_INVEN and self.object:wornInven() then list[#list+1] = {name="Take off", action="takeoff"} end
 	if self.inven == self.actor.INVEN_INVEN then list[#list+1] = {name="Drop", action="drop"} end
 

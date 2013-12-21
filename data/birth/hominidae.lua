@@ -10,8 +10,7 @@ newBirthDescriptor{
 		{
 			__ALL__ = "disallow",
 			Human = "allow",
-			--Delver = function() return profile.mod.allow_build.delver and "allow" or "disallow" end,
-			Delver = "allow",
+			Delver = function() return profile.mod.allow_build.delver and "allow" or "disallow" end,
 			Chimpanzee = "allow",
 			Gorilla = "allow",
 			Orangutan = function() return profile.mod.allow_build.orangutan and "allow" or "disallow" end,

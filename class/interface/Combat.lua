@@ -253,7 +253,7 @@ _M.proficiencies = {
 }
 
 function _M:hasProficiency(type)
-	if self:knowTalent(proficiencies[type]) then return true
+	if self:knowTalent(self.proficiencies[type]) then return true
 	else return false end
 end
 
@@ -263,7 +263,7 @@ _M.focuses = {
 }
 
 function _M:hasFocus(type)
-	if self:knowTalent(focuses[type]) then return true
+	if self:knowTalent(self.focuses[type]) then return true
 	else return false end
 end
 
@@ -273,7 +273,7 @@ _M.specializations = {
 }
 
 function _M:hasSpecialization(type)
-	if self:knowTalent(specializations[type]) then return true
+	if self:knowTalent(self.specializations[type]) then return true
 	else return false end
 end
 
@@ -283,7 +283,7 @@ _M.greaterSpecializations = {
 }
 
 function _M:hasGreaterSpecialization(type)
-	if self:knowTalent(greaterSpecializations[type]) then return true
+	if self:knowTalent(self.greaterSpecializations[type]) then return true
 	else return false end
 end
 
@@ -293,7 +293,7 @@ _M.improvedCritials = {
 }
 
 function _M:hasImprovedCritial(type)
-	if self:knowTalent(improvedCritials[type]) then return true
+	if self:knowTalent(self.improvedCritials[type]) then return true
 	else return false end
 end
 

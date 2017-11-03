@@ -51,6 +51,7 @@ function _M:run()
 	self.log = function(style, ...) if type(style) == "number" then self.logdisplay(...) self.flash(style, ...) else self.logdisplay(style, ...) self.flash(self.flash.NEUTRAL, style, ...) end end
 	self.logSeen = function(e, style, ...) if e and self.level.map.seens(e.x, e.y) then self.log(style, ...) end end
 	self.logPlayer = function(e, style, ...) if e == self.player then self.log(style, ...) end end
+	self.logNewest = function() return self.logdisplay:getNewestLine() end
 
 	self.log(self.flash.GOOD, "Welcome to #00FF00#Startide!")
 
@@ -77,7 +78,7 @@ function _M:newGame()
 	self.player = Player.new{name=self.player_name, game_ender=true}
 	Map:setViewerActor(self.player)
 	self:setupDisplayMode()
-
+	
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "clade", "species" }, function()
 		self:changeLevel(1, self.player.starting_zone)

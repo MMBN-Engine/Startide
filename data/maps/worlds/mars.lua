@@ -1,7 +1,16 @@
 defineTile('~', "OCEAN")
 defineTile('-', "SHALLOWS")
 defineTile('.', "LAND")
-defineTile('h', "SPACE_ELEVATOR")
+defineTile('h', engine.Grid.new{
+	notice = true, 
+	change_level=1, 
+	display='*', 
+	color={r=255, g=255, b=255}, 
+	back_color=colors.DARK_GREEN,
+	name = "Huygens Space Elevator", 
+	desc = "A space elevator",
+	change_zone = "huygens-elevator",
+})
 
 startx = 63
 starty = 63

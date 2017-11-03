@@ -1,3 +1,5 @@
+local System = require "mod.class.System"
+
 newChat{ id="welcome",
 	text = [[#LIGHT_GREEN#Choose destination.]],
 	answers = {
@@ -5,7 +7,7 @@ newChat{ id="welcome",
 			action = function(npc, player) game:changeLevel(1, "hanger") end
 		},
 		{"The surface",
-			action = function(npc, player) game:changeLevel(1, game.zone.elevator) end
+			action = function(npc, player) game:changeLevel(1, System:getZone(game.zone.elevator)) end
 		},
 		{"Leave"},
 	}

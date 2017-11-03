@@ -44,7 +44,7 @@ ActorStats:defineStat("Intelligence",	"int", 10, 1, 20, "Intelligence defines yo
 ActorStats:defineStat("Constitution",	"con", 10, 1, 20, "Constitution defines your character's ability to withstand and resist damage. It increases your maximum life and physical resistance.")
 
 ActorInventory:defineInventory("MAINHAND", "Mainhand", true, "normal")
-ActorInventory:defineInventory("OFFHAND", "Offhand", true, "Normal")
+ActorInventory:defineInventory("OFFHAND", "Offhand", true, "normal")
 ActorInventory:defineInventory("BODY", "Body", true, "normal")
 ActorInventory:defineInventory("HEAD", "Head", true, "normal")
 ActorInventory:defineInventory("CLIP", "Clip", true, "normal")

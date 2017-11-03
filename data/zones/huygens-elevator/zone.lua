@@ -8,7 +8,7 @@ return {
 	persistent = "zone",
 	all_remembered = true,
 	all_lited = true,
-	elevator = "mars",
+	elevator = "MARS",
 	generator =  {
 		map = {
 			class = "engine.generator.map.Static",

@@ -51,6 +51,8 @@ newBirthDescriptor{
 		["general"] = {true, 0},
 		["damage-reduction"] = {true, 0},
 		["ranged"] = {true, 0},
+		["handgun"] = {true, 0},
+		["longarm"] = {true, 0}
 	},
 	talents = {
 		--[ActorTalents.T_THROW_GRENADE]=1,

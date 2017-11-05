@@ -201,7 +201,7 @@ Mouse: #00FF00#Left click#FFFFFF# to learn; #00FF00#right click#FFFFFF# to unlea
 		helplines = str:splitLines(self.iw / 2 - 10, self.font)
 
 		lines = self.actor:getTalentFullDescription(t):splitLines(self.iw / 2 - 10, self.font)
-		--local req = self.actor:getTalentReqDesc(self.list[self.sel].talent, 1):toTString()
+		local req = self.actor:getTalentReqDesc(self.list[self.sel].talent, 1):toTString()
 		local req = tostring(self.actor:getTalentReqDesc(self.list[self.sel].talent, 1))
 		reqlines = req:splitLines(self.iw / 2 - 10, self.font)
 

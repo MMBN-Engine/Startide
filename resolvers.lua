@@ -299,3 +299,14 @@ function resolvers.calc.species(t, e)
 	e = apply({species, clade}, e)
 	return e
 end
+
+function resolvers.color()
+	return {__resolver="color",__resolve_last=true}
+end
+function resolvers.calc.color(t, e)
+	e.color_r = rng.range(100,255)
+	e.color_g = rng.range(100,255)
+	e.color_b = rng.range(100,255)
+	
+	return nill
+end

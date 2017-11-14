@@ -300,13 +300,17 @@ function resolvers.calc.species(t, e)
 	return e
 end
 
+-- Set one value to zero for more vivid colors
 function resolvers.color()
 	return {__resolver="color",__resolve_last=true}
 end
 function resolvers.calc.color(t, e)
-	e.color_r = rng.range(100,255)
-	e.color_g = rng.range(100,255)
-	e.color_b = rng.range(100,255)
+	local color_list = {rng.range(100,255),rng.range(100,255),rng.range(100,255)}
+	color_list[rng.range(1,3)] = 0
+	
+	e.color_r = color_list[1]
+	e.color_g = color_list[2]
+	e.color_b = color_list[3]
 	
 	return nill
 end

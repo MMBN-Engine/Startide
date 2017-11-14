@@ -1,3 +1,6 @@
+dofile("/mod/class/AsciiMap.lua")
+local Map = require "engine.Map"
+
 -- This file loads the game module, and loads data
 local KeyBind = require "engine.KeyBind"
 local DamageType = require "engine.DamageType"

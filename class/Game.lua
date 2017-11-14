@@ -71,13 +71,13 @@ function _M:run()
 	-- Ok everything is good to go, activate the game in the engine!
 	self:setCurrent()
 
-	if self.level then self:setupDisplayMode() end
+	if self.level then self:setupDisplayMode(true) end
 end
 
 function _M:newGame()
 	self.player = Player.new{name=self.player_name, game_ender=true}
 	Map:setViewerActor(self.player)
-	self:setupDisplayMode()
+	self:setupDisplayMode(true)
 	
 	self.creating_player = true
 	local birth = Birther.new(nil, self.player, {"base", "clade", "species" }, function()
@@ -104,17 +104,18 @@ function _M:loaded()
 	engine.GameTurnBased.loaded(self)
 	Zone:setup{npc_class="mod.class.NPC", grid_class="mod.class.Grid", object_class="mod.class.Object",}
 	Map:setViewerActor(self.player)
-	Map:setViewPort(200, 20, self.w - 200, math.floor(self.h * 0.80) - 20, 32, 32, "/data/font/DejaVuSans.ttf", 22, false)
+	-- Map:setViewPort(200, 20, self.w - 200, math.floor(self.h * 0.80) - 20, 32, 32, "/data/font/DejaVuSans.ttf", 22, false)
+	self:setupDisplayMode(false)
 	self.key = engine.KeyBind.new()
 end
 
-function _M:setupDisplayMode()
+function _M:setupDisplayMode(full)
 	print("[DISPLAY MODE] 32x32 ASCII/background")
-	Map:setViewPort(200, 20, self.w - 200, math.floor(self.h * 0.80) - 20, 32, 32, "/data/font/DejaVuSans.ttf", 22, false)
+	Map:setViewPort(200, 20, self.w - 200, math.floor(self.h * 0.80) - 20, 20, 32, "/data/font/DejaVuSans.ttf", 32, false)
 	Map:resetTiles()
 	Map.tiles.use_images = false
 
-	if self.level then
+	if self.level and full then
 		self.level.map:recreate()
 		engine.interface.GameTargeting.init(self)
 		self.level.map:moveViewSurround(self.player.x, self.player.y, 8, 8)

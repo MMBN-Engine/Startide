@@ -16,6 +16,7 @@ local ActorInventory = require "engine.interface.ActorInventory"
 local Quest = require "engine.Quest"
 local System = require "mod.class.System"
 local Faction = require "engine.Faction"
+local Grammar = require "mod.class.Grammar"
 
 UIBase.ui = "simple"
 
@@ -67,5 +68,8 @@ System:loadDefinition("/data/systems/solar-system.lua")
 
 -- Factions
 Faction:add{ name="Neutral", reaction = {}, }
+
+-- Species generator rules
+Grammar:loadDefinition("/data/species_grammar.lua")
 
 return {require "mod.class.Game" }

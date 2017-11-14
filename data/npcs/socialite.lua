@@ -24,7 +24,7 @@ newEntity{
 	genus = "orangutan",
 	desc = [[An orangutan.]],
 	resolvers.color(),
-	resolvers.species()
+	resolvers.randomDescription()
 }
 
 

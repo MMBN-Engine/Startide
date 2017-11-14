@@ -310,3 +310,13 @@ function resolvers.calc.color(t, e)
 	
 	return nill
 end
+
+local grammar = require "mod.class.Grammar"
+function resolvers.randomDescription()
+	return {__resolver="randomDescription",__resolve_last=true}
+end
+function resolvers.calc.randomDescription(t, e)
+	e.desc = grammar:getRandomDescription()
+	
+	return nill
+end

@@ -305,7 +305,7 @@ function resolvers.color()
 	return {__resolver="color",__resolve_last=true}
 end
 function resolvers.calc.color(t, e)
-	local color_list = {rng.range(100,255),rng.range(100,255),rng.range(100,255)}
+	local color_list = {rng.range(1,255),rng.range(1,255),rng.range(1,255)}
 	color_list[rng.range(1,3)] = 0
 	
 	e.color_r = color_list[1]

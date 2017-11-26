@@ -64,11 +64,12 @@ function _M:generateList()
 			local cat = tt.type:gsub("/.*", "")
 			local ttknown = self.actor:knowTalentType(tt.type)
 			list[#list+1] = { name = cat:capitalize(), type=tt.type, color={0,200,0}}
-			if ttknown then
-				known[#known+1] = {name="known", color={0,200,0}}
-			else
-				known[#known+1] = {name="0/1", color={128,128,128}}
-			end
+			--if ttknown then
+			--	known[#known+1] = {name="known", color={0,200,0}}
+			--else
+			--	known[#known+1] = {name="0/1", color={128,128,128}}
+			--end
+			known[#known+1] = {name=""}
 
 			-- Find all talents of this school
 			if (self.actor.__hidden_talent_types[tt.type] == nil and ttknown) or (self.actor.__hidden_talent_types[tt.type] ~= nil and not self.actor.__hidden_talent_types[tt.type]) then
@@ -86,7 +87,7 @@ function _M:generateList()
 						end
 					end
 				end
-			end
+			end		
 		end
 	end
 	self.list = list

@@ -75,14 +75,16 @@ function _M:generateList()
 			if (self.actor.__hidden_talent_types[tt.type] == nil and ttknown) or (self.actor.__hidden_talent_types[tt.type] ~= nil and not self.actor.__hidden_talent_types[tt.type]) then
 				for j, t in ipairs(tt.talents) do
 					if not t.hide or self.actor.__show_special_talents[t.id] then
-																		list[#list+1] = { name="    "..t.name, talent=t.id, color=not ttknown and {128,128,128} }
 						if self.actor:getTalentLevelRaw(t.id) == t.points then
 							known[#known+1] = {name="known", color=ttknown and {0,255,0} or {128,128,128}}
+							list[#list+1] = { name="    "..t.name, talent=t.id, color=not ttknown and {128,128,128} }						
 						else
 							if not self.actor:canLearnTalent(t) then
 								known[#known+1] = {name=self.actor:getTalentLevelRaw(t.id).."/"..t.points, color=ttknown and {255,0,0} or {128,128,128}}
+								list[#list+1] = { name="    "..t.name, talent=t.id, color=ttknown and {255,0,0} or {128,128,128} }						
 							else
 								known[#known+1] = {name=self.actor:getTalentLevelRaw(t.id).."/"..t.points, color = not ttknown and {128,128,128}}
+								list[#list+1] = { name="    "..t.name, talent=t.id, color=not ttknown and {128,128,128} }
 							end
 						end
 					end

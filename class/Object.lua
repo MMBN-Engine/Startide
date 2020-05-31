@@ -1,6 +1,7 @@
 require "engine.class"
 require "engine.Object"
 require "engine.interface.ObjectActivable"
+require "mod.class.interface.ActorInventory"
 
 local Stats = require("engine.interface.ActorStats")
 local Talents = require("engine.interface.ActorTalents")
@@ -9,7 +10,8 @@ local DamageType = require("engine.DamageType")
 module(..., package.seeall, class.inherit(
 	engine.Object,
 	engine.interface.ObjectActivable,
-	engine.interface.ActorTalents
+	engine.interface.ActorTalents,
+	engine.interface.ActorInventory
 ))
 
 function _M:init(t, no_default)
@@ -18,6 +20,7 @@ function _M:init(t, no_default)
 	engine.Object.init(self, t, no_default)
 	engine.interface.ObjectActivable.init(self, t)
 	engine.interface.ActorTalents.init(self, t)
+	engine.interface.ActorInventory.init(self, t)
 end
 
 function _M:canAct()

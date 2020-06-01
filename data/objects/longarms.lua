@@ -12,6 +12,7 @@ newEntity{
 	egos_chance = 20,
 	name = "a generic longarm",
 	ammo = "bullets", 
+	body = {BULLET = 1,},
 } 
 
 newEntity{ 

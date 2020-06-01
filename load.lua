@@ -56,6 +56,10 @@ ActorInventory:defineInventory("COMBAT_SOFTWARE", "Combat Software", true, "norm
 
 ActorInventory:defineInventory("EYES", "Eyes", true, "implant")
 
+-- Inventory slots for weapon mods
+ActorInventory:defineInventory("BULLET", "Bullets", true, "weapon")
+ActorInventory:defineInventory("SHELL", "Shells", true, "weapon")
+
 -- Actor AIs
 ActorAI:loadDefinition("/engine/ai/")
 ActorAI:loadDefinition("/mod/ai/")

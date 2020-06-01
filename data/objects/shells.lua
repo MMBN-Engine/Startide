@@ -6,7 +6,6 @@ newEntity{
 	display = "{", 
 	color=colors.SLATE, 
 	rarity = 10,
-	encumber = 0,
 	name = "a generic shell",
 	resolvers.ammo(),
 } 

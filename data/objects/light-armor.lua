@@ -7,7 +7,6 @@ newEntity{
 	display = "[", 
 	color=colors.UMBER, 
 	rarity = 5,
-	encumber = 0,
 	name = "a generic armor",
 	egos = "/data/objects/egos/light-armor.lua",
 	egos_chance = 20,

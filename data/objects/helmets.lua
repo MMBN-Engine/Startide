@@ -6,7 +6,6 @@ newEntity{
 	display = "]", 
 	color=colors.SLATE, 
 	rarity = 6,
-	encumber = 0,
 	egos = "/data/objects/egos/helmets.lua",
 	egos_chance = 20,
 	name = "a generic helmet",  

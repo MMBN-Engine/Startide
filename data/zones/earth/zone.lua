@@ -3,7 +3,7 @@ return {
 	level_range = {1, nil},
 	max_level = 1,
 	--decay = {300, 800},
-	width = 50, height = 50,
+	width = 481, height = 241,
 	level_scheme = "fixed",
 	persistent = "zone",
 	all_remembered = true,
@@ -12,7 +12,7 @@ return {
 	generator =  {
 		map = {
 			class = "engine.generator.map.Static",
-			map = "ship-hanger",
+			map = "worlds/earth",
 		},
 		actor = {
 			class = "engine.generator.actor.Random",

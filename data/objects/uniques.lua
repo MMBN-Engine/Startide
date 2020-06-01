@@ -10,7 +10,6 @@ newEntity{
 	color = colors.ORANGE, 
 	name = "plasma cannon",
 	rarity = 200,
-	encumber = 0,
 	unique = true,
 	level_range = {10, 20},
 	ranged = { 
@@ -56,7 +55,6 @@ newEntity{
 	name = "sleepless eyes",
 	rarity = 150,
 	medical = true,
-	encumber = 0,
 	unique = true,
 	level_range = {1, 7},
 	on_wear = function(self, who)
@@ -86,7 +84,6 @@ newEntity{
 	name = "eagle eyes",
 	rarity = 200,
 	medical = true,
-	encumber = 0,
 	unique = true,
 	level_range = {1, 7},
 	on_wear = function(self, who)

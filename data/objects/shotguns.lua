@@ -10,8 +10,9 @@ newEntity{
 	encumber = 0,
 	egos = "/data/objects/egos/handguns.lua",
 	egos_chance = 20,
-	name = "a generic longarm",
+	name = "a generic shotgun",
 	ammo = "shells", 
+	body = {SHELL = 1,},
 } 
 
 newEntity{ 

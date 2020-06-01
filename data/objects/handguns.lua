@@ -6,11 +6,11 @@ newEntity{
 	display = "}", 
 	color=colors.SLATE, 
 	rarity = 5,
-	encumber = 0,
 	egos = "/data/objects/egos/handguns.lua",
 	egos_chance = 20,
 	name = "a generic handgun",
 	ammo = "bullets", 
+	body = {BULLET = 1,},
 } 
 
 newEntity{ 

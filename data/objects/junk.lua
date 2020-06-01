@@ -6,8 +6,7 @@ newEntity{
 	display = "/", 
 	color=colors.SLATE, 
 	rarity = 5,
-	encumber = 0,
-	name = "a generic battleaxe",  
+	name = "a generic weapon",  
 } 
 
 newEntity{ 

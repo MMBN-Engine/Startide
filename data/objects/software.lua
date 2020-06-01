@@ -6,7 +6,6 @@ newEntity{
 	display = "?", 
 	color=colors.WHITE, 
 	rarity = 10,
-	encumber = 0,
 	name = "a generic program",
 } 
 

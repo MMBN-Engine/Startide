@@ -5,7 +5,6 @@ newEntity{
 	display = "!", 
 	color=colors.GREY, 
 	rarity = 5,
-	encumber = 0,
 	name = "a generic stimulant",
 }
 

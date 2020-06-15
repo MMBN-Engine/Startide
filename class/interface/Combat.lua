@@ -146,7 +146,7 @@ end
 -- Ranged Attack functions
 function _M:rangedTarget(target, talent, tg)
 	local weapon = self:hasRangedWeapon()
-	local ammo = self:hasAmmo(weapon.ammo)
+	local ammo = self:hasAmmo(weapon)
 
 	if not weapon then
 		game.logPlayer(self, "You need to wield a gun to shoot.")
@@ -205,6 +205,10 @@ function _M:rangedTarget(target, talent, tg)
 
 	if weapon.ammo then
 		ammo.remaining = ammo.remaining - 1
+		if ammo.remaining == 0 then
+			weapon:removeObject(weapon.ammo,1,false)
+			ammo:removed()
+		end
 	end
 
 	self:useEnergy(game.energy_to_act)
@@ -327,18 +331,14 @@ function _M:rangedRoll()
 	return dam
 end
 
-function _M:hasAmmo(type)
-	if not self:getInven("CLIP") then return nil end
-
-	local ammo = self:getInven("CLIP")[1]
+function _M:hasAmmo(weapon)
+	if not weapon then return nil end
+	if not weapon.ammo then return nil end
+	
+	local ammo = weapon:getInven(weapon.ammo)[1]
 	if not ammo then
 		return nil
 	end
-	
-	
-	if (type and not (type == ammo.subtype)) or not (ammo.remaining > 0) then
-		return nil
-	end
-	
+
 	return ammo
 end

@@ -36,9 +36,28 @@ function resolvers.calc.equip(t, e)
 			if filter.force_drop then o.no_drop = nil end
 			game.zone:addEntity(game.level, o, "object")
 
-			--if t[1].id then o:identify(t[1].id) end
+			if filter.items then
+				for j, o_filter in ipairs(filter.items) do
+					local o_o
+					if not o_filter.defined then
+						o_o = game.zone:makeEntity(game.level, "object", o_filter, nil, true)
+					else
+						o_o = game.zone:makeEntityByName(game.level, "object", o_filter.defined)
+					end
+					if o_o then
+						print("Zone made us an equipment according to filter!", o_o:getName())
+
+						o:wearObject(o_o, true, false)
+
+						-- Do not drop it unless it is an ego or better
+						if not o_o.egoed and not o_o.unique then o_o.no_drop = true end
+						if o_filter.force_drop then o_o.no_drop = nil end
+						game.zone:addEntity(game.level, o_o, "object")
+						end
+					end
+				end
+			end
 		end
-	end
 	-- Delete the origin field
 	return nil
 end

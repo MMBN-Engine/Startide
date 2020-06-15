@@ -19,8 +19,7 @@ newBirthDescriptor{
 		},
 		resolvers.equip{ id = true, 
 			{type = "armor", subtype = "helmet", name = "miner's helmet"},
-			{type = "weapon", subtype = "handgun", name = "revolver"} ,
-			{type = "ammo", subtype = "bullets", name = "bullets"}
+			{type = "weapon", subtype = "handgun", name = "revolver", items={{type = "ammo", subtype = "bullets", name = "bullets"}}} ,
 		},
 		starting_zone = "manufactory",
 		starting_quest = "robot-rampage",

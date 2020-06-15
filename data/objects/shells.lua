@@ -1,6 +1,6 @@
 newEntity{ 
 	define_as = "BASE_SHELL", 
-	slot = "CLIP", 
+	slot = "SHELL", 
 	type = "ammo", 
 	subtype="shells", 
 	display = "{", 

@@ -1,6 +1,6 @@
 newEntity{ 
 	define_as = "BASE_BULLET", 
-	slot = "CLIP", 
+	slot = "BULLET", 
 	type = "ammo", 
 	subtype="bullets", 
 	display = "{", 

@@ -11,7 +11,7 @@ newEntity{
 	egos = "/data/objects/egos/handguns.lua",
 	egos_chance = 20,
 	name = "a generic shotgun",
-	ammo = "shells", 
+	ammo = "SHELL", 
 	body = {SHELL = 1,},
 } 
 
